@@ -18,10 +18,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "test-coverage": "jest --watchAll=false --coverage",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --passWithNoTests",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -43,9 +45,14 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/index.js",
-      "!src/reportWebVitals.js",
-      "!src/components/LoginForm/__snapshots__/*"
+      "src/**/*.tsx",
+      "src/**/*.test.tsx",
+      "!src/index.tsx",
+      "!src/reportWebVitals.ts",
+      "!src/setupTests.ts"
     ]
+  },
+  "devDependencies": {
+    "husky": "^7.0.0"
   }
 }
