@@ -42,18 +42,18 @@ const RegisterFormComponent = (): JSX.Element => {
         onSubmit={handleSubmit}
       >
         <div className="login-form__wrapper">
-          <label className="login-form__label" htmlFor="name">
+          <label className="login-form__label" htmlFor="RestaurantName">
             Restaurant Name
             <input
               className="login-form__input"
               type="text"
-              id="restauntName"
-              placeholder="restaurantName"
+              id="restaurantName"
+              placeholder="Restaurant Name"
               value={formData.restaurantName}
               onChange={handleImputChange}
             />
           </label>
-          <label className="login-form__label" htmlFor="password">
+          <label className="login-form__label" htmlFor="CIF">
             CIF
             <input
               className="login-form__input"
