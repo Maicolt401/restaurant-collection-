@@ -1,15 +1,56 @@
-const FormComponent = (): JSX.Element => {
+import { ChangeEvent, useState } from "react";
+import { useAppDispatch } from "../redux/hooks/hooks";
+import { registerThunk } from "../redux/thunks/userThunks";
+
+interface FormData {
+  restaurantName: string;
+  username: string;
+  CIF: string;
+  password: string;
+}
+
+const RegisterFormComponent = (): JSX.Element => {
+  const clearFiles = {
+    restaurantName: "",
+    username: "",
+    CIF: "",
+    password: "",
+  };
+
+  const [formData, setformData] = useState<FormData>(clearFiles);
+  const dispatch = useAppDispatch();
+
+  const handleImputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setformData({
+      ...formData,
+      [event.target.id]: event.target.value,
+    });
+  };
+
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    dispatch(registerThunk(formData));
+    setformData(clearFiles);
+  };
+
   return (
     <>
-      <form className="login-form" autoComplete="off" noValidate>
+      <form
+        className="login-form"
+        autoComplete="off"
+        noValidate
+        onSubmit={handleSubmit}
+      >
         <div className="login-form__wrapper">
           <label className="login-form__label" htmlFor="name">
             Restaurant Name
             <input
               className="login-form__input"
               type="text"
-              id="name"
-              placeholder="Name"
+              id="restauntName"
+              placeholder="restaurantName"
+              value={formData.restaurantName}
+              onChange={handleImputChange}
             />
           </label>
           <label className="login-form__label" htmlFor="password">
@@ -17,8 +58,10 @@ const FormComponent = (): JSX.Element => {
             <input
               className="login-form__input"
               type="text"
-              id="cif"
-              placeholder="Password"
+              id="CIF"
+              placeholder="CIF"
+              value={formData.CIF}
+              onChange={handleImputChange}
             />
           </label>
           <label className="login-form__label" htmlFor="username">
@@ -28,6 +71,8 @@ const FormComponent = (): JSX.Element => {
               type="text"
               id="username"
               placeholder="Username"
+              value={formData.username}
+              onChange={handleImputChange}
             />
           </label>
           <label className="login-form__label" htmlFor="password">
@@ -37,6 +82,8 @@ const FormComponent = (): JSX.Element => {
               type="password"
               id="password"
               placeholder="Password"
+              value={formData.password}
+              onChange={handleImputChange}
             />
           </label>
           <button className="login-form__button" type="submit">
@@ -52,4 +99,4 @@ const FormComponent = (): JSX.Element => {
   );
 };
 
-export default FormComponent;
+export default RegisterFormComponent;
