@@ -1,5 +1,5 @@
 import { Provider } from "react-redux";
-import FormComponent from "./components/FormComponent";
+import FormComponent from "./components/RegisterFormComponent";
 import store from "./redux/store/store";
 
 function App(): JSX.Element {

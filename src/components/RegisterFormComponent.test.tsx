@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../redux/store/store";
-import RegisterFormComponent from "./FormComponent";
+import RegisterFormComponent from "./RegisterFormComponent";
 
 describe("Given a FormComponent function", () => {
   describe("When it should in the document a label", () => {
