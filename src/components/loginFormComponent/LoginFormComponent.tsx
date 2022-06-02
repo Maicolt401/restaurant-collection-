@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import StiledComponentFormLogin from "./LoginFormComponentStyled";
 
 const LoginFormComponent = () => {
@@ -28,9 +29,9 @@ const LoginFormComponent = () => {
               Login
             </button>
             <p>Do you don`t have an account?</p>
-            <a href="." className="">
+            <NavLink to="/register" className="">
               Click here to register
-            </a>
+            </NavLink>
           </div>
         </form>
       </StiledComponentFormLogin>

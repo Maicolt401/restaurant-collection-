@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks";
 import StiledComponentFormRegister from "./RegisterFormComponentStyle";
+import { NavLink } from "react-router-dom";
 
 interface FormData {
   restaurantName: string;
@@ -92,9 +93,9 @@ const RegisterFormComponent = (): JSX.Element => {
               Register
             </button>
             <p>Do you have an account?</p>
-            <a href="." className="">
+            <NavLink to="/login" className="">
               Click here to log in
-            </a>
+            </NavLink>
           </div>
         </form>
       </StiledComponentFormRegister>
