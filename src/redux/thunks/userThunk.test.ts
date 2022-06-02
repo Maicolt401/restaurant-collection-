@@ -1,3 +1,4 @@
+import { mockClientRegister } from "../../mocks/handlres";
 import { server } from "../../mocks/server";
 import { registerThunk } from "./userThunks";
 
@@ -10,7 +11,8 @@ describe("Given a registerThunk function", () => {
     test("It should call the API with a post method containing the user", async () => {
       const dispatch = jest.fn();
 
-      await registerThunk(dispatch());
+      const thunk = await registerThunk(mockClientRegister);
+      thunk(dispatch());
 
       expect(dispatch).toHaveBeenCalled();
     });

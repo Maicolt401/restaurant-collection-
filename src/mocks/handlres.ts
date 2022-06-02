@@ -1,10 +1,10 @@
 import { rest } from "msw";
 
-const mockClient = {
-  resturanteName: "la villota",
-  name: "villota",
+export const mockClientRegister = {
+  restaurantName: "la villota",
+  username: "villota",
   CIF: "as56541",
-  password: 2123456,
+  password: "2123456",
 };
 export const handlres = [
   rest.post(
@@ -13,7 +13,7 @@ export const handlres = [
       return res(
         ctx.status(201),
         ctx.json({
-          mockClient,
+          mockClientRegister,
         })
       );
     }
