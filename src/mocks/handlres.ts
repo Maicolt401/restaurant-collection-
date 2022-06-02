@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-const mockClient = {
+export const mockClientRegister = {
   resturanteName: "la villota",
   name: "villota",
   CIF: "as56541",
@@ -13,7 +13,7 @@ export const handlres = [
       return res(
         ctx.status(201),
         ctx.json({
-          mockClient,
+          mockClientRegister,
         })
       );
     }
