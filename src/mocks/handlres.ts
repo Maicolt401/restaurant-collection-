@@ -1,10 +1,10 @@
 import { rest } from "msw";
 
 export const mockClientRegister = {
-  resturanteName: "la villota",
-  name: "villota",
+  restaurantName: "la villota",
+  username: "villota",
   CIF: "as56541",
-  password: 2123456,
+  password: "2123456",
 };
 export const handlres = [
   rest.post(
