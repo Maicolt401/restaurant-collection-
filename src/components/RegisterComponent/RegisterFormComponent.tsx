@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
-import { useAppDispatch } from "../redux/hooks/hooks";
-import { registerThunk } from "../redux/thunks/userThunks";
+import { useAppDispatch } from "../../redux/hooks/hooks";
+import { registerThunk } from "../../redux/thunks/userThunks";
 import StiledComponentFormRegister from "./RegisterFormComponentStyle";
 
 interface FormData {
