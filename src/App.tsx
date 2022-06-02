@@ -1,12 +1,12 @@
 import { Provider } from "react-redux";
-import FormComponent from "./components/RegisterFormComponent";
+import RegisterPage from "./pages/RegisterPage";
 import store from "./redux/store/store";
 
 function App(): JSX.Element {
   return (
     <>
       <Provider store={store}>
-        <FormComponent />
+        <RegisterPage />
       </Provider>
     </>
   );

@@ -1,9 +1,13 @@
 import RegisterFormComponent from "../components/RegisterFormComponent";
+import StyledPageRegister from "./registerPageStyled";
 
 const RegisterPage = (): JSX.Element => {
   return (
     <>
-      <h1>REGISTER</h1>
+      <StyledPageRegister>
+        <h1>Restaurant Collection</h1>
+        <h2>REGISTER</h2>
+      </StyledPageRegister>
       <RegisterFormComponent />;
     </>
   );
