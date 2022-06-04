@@ -7,10 +7,20 @@ export const mockClientRegister = {
   password: "2123456",
 };
 
+const mockToken = "token";
+
 export const handlres = [
   rest.post(
-    `${process.env.REACT_APP_API_URL}clients/register`,
-    (req, res, ctx) => { return res(
+    `${process.env.REACT_APP_API_URL}/clients/login`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({ token: mockToken }));
+    }
+  ),
+
+  rest.post(
+    `${process.env.REACT_APP_API_URL}/clients/register`,
+    (req, res, ctx) => {
+      return res(
         ctx.status(201),
         ctx.json({
           mockClientRegister,
@@ -19,3 +29,8 @@ export const handlres = [
     }
   ),
 ];
+
+export const mockLoginUser = {
+  username: "villasants6",
+  password: "123456",
+};
