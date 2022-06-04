@@ -1,16 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { UserData } from "../types/userTypes";
 
 interface userState {
-  name: string;
   username: string;
-  id: string;
   logged: boolean;
 }
 
 const initialState: userState = {
-  name: "",
   username: "",
-  id: "",
   logged: false,
 };
 
@@ -18,10 +15,19 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    register: (user, action) => ({ ...action.payload }),
+    login: (user: userState, action: PayloadAction<UserData>) => ({
+      ...action.payload,
+      logged: true,
+    }),
+    logout: () => ({
+      username: "",
+      id: "",
+      logged: false,
+    }),
   },
 });
 
-export const { register: registerActionCreator } = userSlice.actions;
+export const { login: loginActionCreator, logout: logouActionCreator } =
+  userSlice.actions;
 
 export default userSlice.reducer;
