@@ -1,13 +1,15 @@
-import { Provider } from "react-redux";
-import RegisterPage from "./pages/RegisterPage";
-import store from "./redux/store/store";
+import { Navigate, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/loginPage/LoginPage";
+import RegisterPage from "./pages/registerPage/RegisterPage";
 
 function App(): JSX.Element {
   return (
     <>
-      <Provider store={store}>
-        <RegisterPage />
-      </Provider>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
     </>
   );
 }

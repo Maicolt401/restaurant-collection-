@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
 import RegisterFormComponent from "./RegisterFormComponent";
 
@@ -13,9 +14,11 @@ describe("Given a FormComponent function", () => {
       const expectedButton = 1;
 
       render(
-        <Provider store={store}>
-          <RegisterFormComponent />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterFormComponent />
+          </Provider>
+        </BrowserRouter>
       );
 
       const buttons = screen.getAllByRole("button");
@@ -25,9 +28,11 @@ describe("Given a FormComponent function", () => {
 
     test("Then it should render the labels 'Username','Password','ResturantName' and `CIF`", () => {
       render(
-        <Provider store={store}>
-          <RegisterFormComponent />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterFormComponent />
+          </Provider>
+        </BrowserRouter>
       );
 
       expect(screen.getAllByText("Username")).toHaveLength(1);
@@ -39,9 +44,11 @@ describe("Given a FormComponent function", () => {
   describe("When the username and password input fields are fill and the button clicked", () => {
     test("Then the value of the username and password input fields should be empty", () => {
       render(
-        <Provider store={store}>
-          <RegisterFormComponent />
-        </Provider>
+        <BrowserRouter>
+          <Provider store={store}>
+            <RegisterFormComponent />
+          </Provider>
+        </BrowserRouter>
       );
 
       userEvent.type(screen.getByLabelText(labelTextPassword), inputText);

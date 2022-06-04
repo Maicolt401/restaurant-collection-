@@ -11,3 +11,8 @@ export interface ResponseData {
   password: string;
   CIF: string;
 }
+
+export interface UserLogin {
+  username: string;
+  password: string;
+}

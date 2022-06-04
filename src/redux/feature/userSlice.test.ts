@@ -1,25 +1,40 @@
-import userReducer, { registerActionCreator } from "./userSlice";
+import { loginActionCreator, logouActionCreator } from "./userSlice";
+import userReducer from "./userSlice";
 
-describe("Given a usersSlice with Register reducer", () => {
-  describe("When we pass a new user", () => {
-    test("Then it should return the new state with the new user", () => {
-      const initialValue = {
-        name: "",
-        username: "",
-        id: "",
+describe("Given a userSlice reducer", () => {
+  describe("When it receives a user and a login action", () => {
+    test("Then it should return user with property logged true", () => {
+      const user = {
+        restaurantName: "la villa",
+        CIF: "s3213135",
+        username: "rocky",
+        password: "123456",
         logged: false,
       };
-      const receivedValue = {
-        restauranName: "la villa de sants",
-        username: "villisca",
-        CIF: "321354",
-        password: "123456",
+
+      const initialValue = { username: "", logged: false };
+
+      const action = loginActionCreator(user);
+      const receivedValue = userReducer(initialValue, action);
+
+      expect(receivedValue.logged).toBe(true);
+    });
+  });
+
+  describe("When it receives a logout action", () => {
+    test("Then it should return logged to false", () => {
+      const user = {
+        name: "hola",
+        username: "hola",
+        logged: true,
       };
 
-      const action = registerActionCreator(receivedValue);
-      const newState = userReducer(initialValue, action);
+      const expectedResult = false;
 
-      expect(newState).toEqual(receivedValue);
+      const logout = logouActionCreator();
+      const userLoggout = userReducer(user, logout);
+
+      expect(userLoggout.logged).toEqual(expectedResult);
     });
   });
 });
