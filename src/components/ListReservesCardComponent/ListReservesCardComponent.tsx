@@ -1,12 +1,27 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { loadReservesThunks } from "../../redux/thunks/reservesThunk/reservesThunk";
+import { IreversesSimple } from "../../redux/types/reservesTypes";
 import ReservesCardComponent from "../ReservesCardComponent/ReservesCardComponent";
 
 const ListReservesCardComponent = (): JSX.Element => {
- const dispathc = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-  const { reserves } =  useAppSelector((state) => state.reserves)
-  
- return ();
+  useEffect(() => {
+    dispatch(loadReservesThunks());
+  }, [dispatch]);
+
+  const reserves: IreversesSimple[] = useAppSelector(
+    (state) => state.reserves.reserves
+  );
+
+  return (
+    <>
+      {reserves.map((reserve, index) => {
+        return <ReservesCardComponent key={index} reserve={reserve} />;
+      })}
+    </>
+  );
 };
 
 export default ListReservesCardComponent;

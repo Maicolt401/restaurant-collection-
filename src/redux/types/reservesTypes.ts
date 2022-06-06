@@ -1,14 +1,14 @@
 export interface IReserves {
-  name: String;
-  DNI: String;
+  name: string;
+  DNI: string;
   data: Date;
-  image: String;
-  time: Number;
-  numberPerson: Number;
+  image: string;
+  time: string;
+  numberPerson: number;
 }
 
 export interface IreversesSimple {
-  name: String;
-  numberPerson: Number;
-  time: Number;
+  name: string;
+  numberPerson: number;
+  time: string;
 }
