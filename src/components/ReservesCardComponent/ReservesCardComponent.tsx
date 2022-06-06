@@ -1,18 +1,6 @@
-import { IreversesSimple } from "../../redux/types/reservesTypes";
-import { FormEvent } from "react";
-
-// interface Props {
-//   reserve: IreversesSimple;
-// }
-
 const ReservesCardComponent = (): //   {
-//   reserve: { name, numberPerson, time },
-// }: Props
-JSX.Element => {
-  const handleOnChange = (event: FormEvent<HTMLInputElement>): void => {
-    event.preventDefault();
-  };
 
+JSX.Element => {
   return (
     <>
       <section className="info">
