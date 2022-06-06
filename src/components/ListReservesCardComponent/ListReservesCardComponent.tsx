@@ -18,7 +18,7 @@ const ListReservesCardComponent = (): JSX.Element => {
   return (
     <>
       {reserves.map((reserve, index) => {
-        return <ReservesCardComponent key={index} reserve={reserve} />;
+        return <ReservesCardComponent key={index} />;
       })}
     </>
   );
