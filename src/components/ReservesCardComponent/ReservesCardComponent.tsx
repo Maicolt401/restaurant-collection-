@@ -1,15 +1,22 @@
-const ReservesCardComponent = (): JSX.Element => {
+import { IreservesSimple } from "../../redux/types/reservesTypes";
+interface Props {
+  reserves: IreservesSimple;
+}
+
+const ReservesCardComponent = ({
+  reserves: { name, time, numberPerson },
+}: Props): JSX.Element => {
   return (
     <>
-      <h1>Yours reservations</h1>
-      <p>name: olga</p>
-      <p>time: 19:30 hrs</p>
-      <p>DNI/NIE/PASSPORT: Y8337345C </p>
-      <p>NUMBERS PERSONS: 5PAX</p>
-      <img
-        src="https://media.gq.com.mx/photos/5e220ec2ffa8c7000803441e/16:9/w_2560%2Cc_limit/40-datos-curiosos-para-descubrir-a-scarlett-johansson.jpg"
-        alt="hello"
-      />
+      <section className="info">
+        <h1>Yours reservations</h1>
+        <p>name: {name}</p>
+        <p>time: {time} hrs</p>
+        <p>NUMBERS PERSONS: {numberPerson}PAX</p>
+      </section>
+      <section className="delete">
+        <button>x</button>
+      </section>
     </>
   );
 };
