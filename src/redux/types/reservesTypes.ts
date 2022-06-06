@@ -4,11 +4,11 @@ export interface IReserves {
   data: Date;
   image: string;
   time: string;
-  numberPerson: number;
+  numberPerson: string;
 }
 
-export interface IreversesSimple {
+export interface IreservesSimple {
   name: string;
-  numberPerson: number;
+  numberPerson: string;
   time: string;
 }

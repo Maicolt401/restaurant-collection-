@@ -1,13 +1,21 @@
-const ReservesCardComponent = (): //   {
+import { IreservesSimple } from "../../redux/types/reservesTypes";
+interface Props {
+  reserves: IreservesSimple;
+}
 
-JSX.Element => {
+const ReservesCardComponent = ({
+  reserves: { name, time, numberPerson },
+}: Props): JSX.Element => {
   return (
     <>
       <section className="info">
         <h1>Yours reservations</h1>
-        <p>name: olga</p>
-        <p>time: 19:30 hrs</p>
-        <p>NUMBERS PERSONS: 5PAX</p>
+        <p>name: {name}</p>
+        <p>time: {time} hrs</p>
+        <p>NUMBERS PERSONS: {numberPerson}PAX</p>
+      </section>
+      <section className="delete">
+        <button>x</button>
       </section>
     </>
   );

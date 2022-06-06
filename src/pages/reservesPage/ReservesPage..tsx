@@ -1,9 +1,9 @@
-import ReservesCardComponent from "../../components/ReservesCardComponent/ReservesCardComponent";
+import ListReservesCardComponent from "../../components/ListReservesCardComponent/ListReservesCardComponent";
 
 const ReservesPage = (): JSX.Element => {
   return (
     <>
-      <ReservesCardComponent />
+      <ListReservesCardComponent />
     </>
   );
 };

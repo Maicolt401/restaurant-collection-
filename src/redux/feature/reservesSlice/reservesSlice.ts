@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IReserves } from "../../types/reservesTypes";
 
 interface ReservesState {
-  reserves: IReserves[];
+  AllReserves: IReserves[];
 }
 
 const initialState: ReservesState = {
-  reserves: [],
+  AllReserves: [],
 };
 
 const reservesSlice = createSlice({
@@ -14,7 +14,7 @@ const reservesSlice = createSlice({
   initialState,
   reducers: {
     loadReserves: (checks, action): ReservesState => ({
-      reserves: [...action.payload],
+      AllReserves: [...action.payload],
     }),
   },
 });
