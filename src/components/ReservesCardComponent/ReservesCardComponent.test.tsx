@@ -8,6 +8,7 @@ import ReservesCardComponent from "./ReservesCardComponent";
 describe("Given the Check component", () => {
   describe("When it's invoked", () => {
     test("Then it should render one heading element", () => {
+      const expecResult = 1;
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -16,9 +17,9 @@ describe("Given the Check component", () => {
         </Provider>
       );
 
-      const result = screen.getByRole("heading");
+      const result = screen.getAllByRole("img");
 
-      expect(result).toBeInTheDocument();
+      expect(result).toHaveLength(expecResult);
     });
   });
 });
