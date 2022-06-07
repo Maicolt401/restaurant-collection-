@@ -9,6 +9,7 @@ import { loginActionCreator } from "./redux/feature/userSlice";
 import { UserData } from "./redux/types/userTypes";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
+import NavLinkComponent from "./components/NavLinkComponent/NavLinkComponent";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
@@ -26,6 +27,7 @@ function App(): JSX.Element {
 
   return (
     <>
+      <NavLinkComponent />
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<LoginPage />} />
