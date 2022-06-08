@@ -5,7 +5,7 @@ interface ReservesState {
   AllReserves: IReserves[];
 }
 
-const initialState: ReservesState = {
+export const initialState: ReservesState = {
   AllReserves: [],
 };
 
