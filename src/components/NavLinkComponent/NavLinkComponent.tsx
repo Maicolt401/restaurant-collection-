@@ -1,6 +1,20 @@
 import StyledNav from "./NavLinkComponentStyled";
+import { NavLink, useNavigate } from "react-router-dom";
+import { correctAction } from "../../modals/modals";
+import { useAppDispatch } from "../../redux/hooks/hooks";
+import { logouActionCreator } from "../../redux/feature/userSlice";
 
 const NavLinkComponent = (): JSX.Element => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    dispatch(logouActionCreator());
+    navigate("/login");
+    correctAction("logged out");
+  };
+
   return (
     <>
       <StyledNav>
@@ -12,19 +26,19 @@ const NavLinkComponent = (): JSX.Element => {
 
           <ul className="menu__box">
             <li>
-              <a className="menu__item" href=".">
+              <NavLink to="/home" className="menu__item">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a className="menu__item" href=".">
+              <NavLink to="/login" className="menu__item">
                 Calendary
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a className="menu__item" href=".">
+              <button onClick={logout} className="menu__item">
                 Logout
-              </a>
+              </button>
             </li>
           </ul>
         </div>
