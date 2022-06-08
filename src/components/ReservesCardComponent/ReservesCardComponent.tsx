@@ -56,7 +56,6 @@ const ReservesCardComponent = ({
 
   const handleDelete = (): void => {
     dispatch(deleteReserveThunk(_id));
-    console.log("aqui toy");
   };
 
   return (
