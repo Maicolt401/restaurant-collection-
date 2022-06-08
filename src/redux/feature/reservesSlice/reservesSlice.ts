@@ -13,7 +13,7 @@ const reservesSlice = createSlice({
   name: "reserves",
   initialState,
   reducers: {
-    loadReserves: (checks, action): ReservesState => ({
+    loadReserves: (reserves, action): ReservesState => ({
       AllReserves: [...action.payload],
     }),
   },
