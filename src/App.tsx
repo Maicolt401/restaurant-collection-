@@ -10,6 +10,7 @@ import { UserData } from "./redux/types/userTypes";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
