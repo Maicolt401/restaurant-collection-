@@ -13,4 +13,13 @@ const mockListReserves = [
   },
 ];
 
+export const mockReserve = [
+  {
+    name: "maria cristhina",
+    date: " 19:30",
+    _id: "2312",
+    numberPersons: "8",
+  },
+];
+
 export default mockListReserves;
