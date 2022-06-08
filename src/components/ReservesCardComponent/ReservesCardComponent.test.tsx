@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import mockListReserves from "../../mocks/mockReserves";
@@ -20,6 +21,23 @@ describe("Given the Check component", () => {
       const result = screen.getAllByRole("img");
 
       expect(result).toHaveLength(expecResult);
+    });
+  });
+  describe("When the two inputs have text and the submit button is clicked", () => {
+    test("Then the two inputs should be empty", () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <ReservesCardComponent reserves={mockListReserves[0]} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const submitButton = screen.getByRole("button");
+
+      userEvent.click(submitButton);
+
+      expect(submitButton).toHaveValue("");
     });
   });
 });

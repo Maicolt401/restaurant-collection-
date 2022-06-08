@@ -25,6 +25,7 @@ describe("Given a LoginForm component", () => {
       expect(label).toHaveValue(inputText);
     });
   });
+
   describe("When the two inputs have text and the submit button is clicked", () => {
     test("Then the two inputs should be empty", () => {
       const usernameLabel = "Username";
@@ -51,6 +52,7 @@ describe("Given a LoginForm component", () => {
       expect(password).toHaveValue("");
     });
   });
+
   describe("When the username is 'hello', the password input is empty and the submit is clicked", () => {
     test("Then the username should be 'hello'", () => {
       const usernameLabel = "Username";
