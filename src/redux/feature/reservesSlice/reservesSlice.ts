@@ -13,13 +13,20 @@ const reservesSlice = createSlice({
   name: "reserves",
   initialState,
   reducers: {
-    loadReserves: (checks, action): ReservesState => ({
+    loadReserves: (reserves, action): ReservesState => ({
       AllReserves: [...action.payload],
+    }),
+    deleteReserve: (reserves, action): ReservesState => ({
+      AllReserves: reserves.AllReserves.filter(
+        (reserve: IReserves) => reserve._id !== action.payload
+      ),
     }),
   },
 });
 
-export const { loadReserves: loadReservessActionCreator } =
-  reservesSlice.actions;
+export const {
+  loadReserves: loadReservessActionCreator,
+  deleteReserve: deleteReserveActionCreator,
+} = reservesSlice.actions;
 
 export default reservesSlice.reducer;

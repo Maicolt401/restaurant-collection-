@@ -9,6 +9,7 @@ import { loginActionCreator } from "./redux/feature/userSlice";
 import { UserData } from "./redux/types/userTypes";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
+import { ToastContainer } from "react-toastify";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
@@ -38,9 +39,19 @@ function App(): JSX.Element {
             </AccesControlUnlogged>
           }
         />
-
-        <Route path="/notfound" element={<NotFoundPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }
