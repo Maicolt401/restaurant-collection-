@@ -1,5 +1,7 @@
+import { useAppDispatch } from "../../redux/hooks/hooks";
 import { IreservesSimple } from "../../redux/types/reservesTypes";
 import styled from "styled-components";
+import { deleteReserveThunk } from "../../redux/thunks/reservesThunk/reservesThunk";
 
 interface Props {
   reserves: IreservesSimple;
@@ -48,18 +50,25 @@ const ReserverStyled = styled.div`
 `;
 
 const ReservesCardComponent = ({
-  reserves: { name, time, numberPersons },
+  reserves: { name, date, numberPersons, _id },
 }: Props): JSX.Element => {
+  const dispatch = useAppDispatch();
+
+  const handleDelete = (): void => {
+    dispatch(deleteReserveThunk(_id));
+    console.log("aqui toy");
+  };
+
   return (
     <>
       <ReserverStyled>
         <section className="info">
           <main>25th</main>
           <p> {name}</p>
-          <p>time: {time} hrs</p>
+          <p>{date} hrs</p>
           <p>NUMBERS PERSONS: {numberPersons}PAX</p>
           <section className="delete">
-            <button>
+            <button onClick={handleDelete}>
               <img src="image/delete.png" alt="delete icon" />
             </button>
           </section>

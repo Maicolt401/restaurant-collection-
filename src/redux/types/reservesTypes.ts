@@ -1,14 +1,16 @@
 export interface IReserves {
   name: string;
+  _id: string;
   DNI: string;
   data: Date;
   image: string;
-  time: string;
+  date: string;
   numberPersons: string;
 }
 
 export interface IreservesSimple {
   name: string;
+  _id: string;
   numberPersons: string;
-  time: string;
+  date: string;
 }
