@@ -165,6 +165,10 @@ const StyledNotFound = styled.div`
     margin-top: 80px;
     margin-bottom: 50px;
     transition: all 0.2s linear;
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
   @media screen and (max-width: 400px) {
     .btn {
@@ -172,6 +176,11 @@ const StyledNotFound = styled.div`
       margin-top: 60px;
       margin-bottom: 50px;
       width: 200px;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
     }
   }
   .btn:hover {

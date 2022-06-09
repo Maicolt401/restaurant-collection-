@@ -20,13 +20,12 @@ const NavLinkComponent = (): JSX.Element => {
       <StyledNav>
         <div className="hamburger-menu">
           <input id="menu__toggle" type="checkbox" />
-          <label className="menu__btn">
+          <label className="menu__btn" htmlFor="menu__toggle">
             <span></span>
           </label>
-
           <ul className="menu__box">
             <li>
-              <NavLink to="/home" className="menu__item">
+              <NavLink to="/login" className="menu__item">
                 Home
               </NavLink>
             </li>

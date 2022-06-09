@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks";
 import StiledComponentFormRegister from "./RegisterFormComponentStyle";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface FormData {
   restaurantName: string;
@@ -18,7 +18,6 @@ const RegisterFormComponent = (): JSX.Element => {
     CIF: "",
     password: "",
   };
-  const navigate = useNavigate();
 
   const [formData, setformData] = useState<FormData>(clearFiles);
   const dispatch = useAppDispatch();
@@ -30,11 +29,10 @@ const RegisterFormComponent = (): JSX.Element => {
     });
   };
 
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>): void => {
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(registerThunk(formData));
     setformData(clearFiles);
-    navigate("/login");
   };
 
   return (
