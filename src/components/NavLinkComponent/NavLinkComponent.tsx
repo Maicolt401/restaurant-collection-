@@ -35,7 +35,7 @@ const NavLinkComponent = (): JSX.Element => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/Add" className="menu__item">
+              <NavLink to="/add" className="menu__item">
                 Add New Reserve
               </NavLink>
             </li>

@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CreatePage from "./pages/CreatePage/CreatePage";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
@@ -23,6 +24,7 @@ function App(): JSX.Element {
       const userData: UserData = jwtDecode(token as string);
       dispatch(loginActionCreator(userData));
       navigate("/home");
+      navigate("/add");
     }
   }, [dispatch, navigate, logged]);
 
@@ -37,6 +39,14 @@ function App(): JSX.Element {
           element={
             <AccesControlUnlogged>
               <ReservesPage />
+            </AccesControlUnlogged>
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            <AccesControlUnlogged>
+              <CreatePage />
             </AccesControlUnlogged>
           }
         />
