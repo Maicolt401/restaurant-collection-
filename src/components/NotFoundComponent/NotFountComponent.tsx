@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import StyledNotFound from "./NotFounStyled";
 
 const NotfoundComponent = (): JSX.Element => {
@@ -15,7 +16,9 @@ const NotfoundComponent = (): JSX.Element => {
       </div>
 
       <h1>Oops! Something went wrong!</h1>
-      <div className="btn">Return to Home</div>
+      <div className="btn">
+        <NavLink to={"/login"}>Return to Home</NavLink>
+      </div>
     </StyledNotFound>
   );
 };

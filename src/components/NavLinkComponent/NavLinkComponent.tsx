@@ -26,7 +26,7 @@ const NavLinkComponent = (): JSX.Element => {
 
           <ul className="menu__box">
             <li>
-              <NavLink to="/home" className="menu__item">
+              <NavLink to="/login" className="menu__item">
                 Home
               </NavLink>
             </li>
