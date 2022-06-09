@@ -35,6 +35,11 @@ const NavLinkComponent = (): JSX.Element => {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/Add" className="menu__item">
+                Add New Reserve
+              </NavLink>
+            </li>
+            <li>
               <button onClick={logout} className="menu__item">
                 Logout
               </button>
