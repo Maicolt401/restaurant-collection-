@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IReserves } from "../../types/reservesTypes";
 
 interface ReservesState {
@@ -21,12 +21,20 @@ const reservesSlice = createSlice({
         (reserve: IReserves) => reserve._id !== action.payload
       ),
     }),
+    createReserve: (
+      reserves,
+      action: PayloadAction<IReserves>
+    ): ReservesState => ({
+      ...reserves,
+      ...action.payload,
+    }),
   },
 });
 
 export const {
   loadReserves: loadReservessActionCreator,
   deleteReserve: deleteReserveActionCreator,
+  createReserve: createReserveActionCreator,
 } = reservesSlice.actions;
 
 export default reservesSlice.reducer;

@@ -2,19 +2,19 @@ const mockListReserves = [
   {
     name: "nacho",
     _id: "56423",
-    date: "20:00",
-    numberPersons: "8",
+    hour: 20,
+    numberPersons: 8,
     DNI: "asdasd6526",
-    data: new Date(),
+    date: "18/03/2022",
     image: "image/asda564",
   },
   {
     name: "maria cristhina",
-    date: " 19:30",
     _id: "2312",
-    numberPersons: "8",
+    hour: 19,
+    numberPersons: 8,
     DNI: "asdasd6526",
-    data: new Date(),
+    date: "18/03/2022",
     image: "image/asda564",
   },
 ];
@@ -22,9 +22,9 @@ const mockListReserves = [
 export const mockReserve = [
   {
     name: "maria cristhina",
-    date: " 19:30",
+    hour: 19,
     _id: "2312",
-    numberPersons: "8",
+    numberPersons: 8,
   },
 ];
 

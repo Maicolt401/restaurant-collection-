@@ -11,11 +11,11 @@ describe("Given a NavLinkComponet component", () => {
         AllReserves: [
           {
             name: mockListReserves[1].name,
-            date: mockListReserves[1].date,
+            hour: mockListReserves[1].hour,
             _id: mockListReserves[1]._id,
             numberPersons: mockListReserves[1].numberPersons,
             DNI: mockListReserves[1].DNI,
-            data: mockListReserves[1].data,
+            date: mockListReserves[1].date,
             image: mockListReserves[1].image,
           },
         ],

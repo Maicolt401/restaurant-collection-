@@ -68,7 +68,7 @@ const LoginFormComponent = (): JSX.Element => {
             <button className="login-form__button" type="submit">
               Login
             </button>
-            <p>Do you don`t have an account?</p>
+            <p>Don`t you have an account?</p>
             <NavLink to="/register" className="">
               Click here to register
             </NavLink>
