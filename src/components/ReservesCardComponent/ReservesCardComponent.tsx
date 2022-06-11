@@ -50,7 +50,7 @@ const ReserverStyled = styled.div`
 `;
 
 const ReservesCardComponent = ({
-  reserves: { name, date, numberPersons, _id },
+  reserves: { name, hour, numberPersons, _id },
 }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
 
@@ -64,7 +64,7 @@ const ReservesCardComponent = ({
         <section className="info">
           <main>25th</main>
           <p> {name}</p>
-          <p>{date} hrs</p>
+          <p>{hour} hrs</p>
           <p>NUMBERS PERSONS: {numberPersons}PAX</p>
           <section className="delete">
             <button onClick={handleDelete}>

@@ -1,5 +1,6 @@
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { AccesControlUnlogged } from "./components/AccesControlles/AccesControlles";
+import AccesControlLogged from "./components/AccesControlles/AccesControlLogged";
 import ReservesPage from "./pages/reservesPage/ReservesPage.";
 import LoginPage from "./pages/loginPage/LoginPage";
 import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
@@ -15,7 +16,7 @@ import CreatePage from "./pages/CreatePage/CreatePage";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
-  const navigate = useNavigate();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -23,17 +24,29 @@ function App(): JSX.Element {
     if (token || logged) {
       const userData: UserData = jwtDecode(token as string);
       dispatch(loginActionCreator(userData));
-      navigate("/home");
-      navigate("/add");
     }
-  }, [dispatch, navigate, logged]);
+  }, [dispatch, logged]);
 
   return (
     <>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="/login"
+          element={
+            <AccesControlLogged>
+              <LoginPage />
+            </AccesControlLogged>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AccesControlLogged>
+              <RegisterPage />
+            </AccesControlLogged>
+          }
+        />
         <Route
           path="/home"
           element={
