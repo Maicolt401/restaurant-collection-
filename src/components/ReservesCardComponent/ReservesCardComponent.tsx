@@ -1,7 +1,11 @@
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { IreservesSimple } from "../../redux/types/reservesTypes";
 import styled from "styled-components";
-import { deleteReserveThunk } from "../../redux/thunks/reservesThunk/reservesThunk";
+import {
+  deleteReserveThunk,
+  getOneReserveThunk,
+} from "../../redux/thunks/reservesThunk/reservesThunk";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   reserves: IreservesSimple;
@@ -53,9 +57,15 @@ const ReservesCardComponent = ({
   reserves: { name, hour, numberPersons, _id },
 }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleDelete = (): void => {
     dispatch(deleteReserveThunk(_id));
+  };
+
+  const handleDetail = (): void => {
+    navigate(`/detail/${_id}`);
+    dispatch(getOneReserveThunk(_id));
   };
 
   return (
@@ -70,6 +80,7 @@ const ReservesCardComponent = ({
             <button onClick={handleDelete}>
               <img src="image/delete.png" alt="delete icon" />
             </button>
+            <button onClick={handleDetail}>Detail Reserve</button>
           </section>
         </section>
       </ReserverStyled>

@@ -1,23 +1,32 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import StyledComponentCreate from "./CreateControllerStyled";
+import {
+  createReserveThunk,
+  editReserveThunk,
+} from "../../redux/thunks/reservesThunk/reservesThunk";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IReserves } from "../../redux/types/reservesTypes";
-import { createReserveThunk } from "../../redux/thunks/reservesThunk/reservesThunk";
 
 const CreateController = (): JSX.Element => {
-  useAppSelector((state) => state.reserves);
-
-  const clearFiles: IReserves = {
-    name: "",
-    _id: "",
-    date: "",
-    DNI: "",
-    image: "",
-    hour: 0,
-    numberPersons: 0,
-  };
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { _id } = useParams();
   const dispatch = useAppDispatch();
+  const { reserves } = useAppSelector((state) => state);
+  const editReserve = reserves.AllReserves.find(
+    (reserve: IReserves) => reserve._id === _id
+  );
+
+  const clearFiles = {
+    name: editReserve ? editReserve.name : "",
+    _id: editReserve ? editReserve._id : "",
+    date: editReserve ? editReserve.date : "",
+    DNI: editReserve ? editReserve.DNI : "",
+    image: editReserve ? editReserve.image : "",
+    hour: editReserve ? editReserve.hour : 0,
+    numberPersons: editReserve ? editReserve.numberPersons : 0,
+  };
 
   const [formData, setFormData] = useState(clearFiles);
 
@@ -34,6 +43,7 @@ const CreateController = (): JSX.Element => {
     event.preventDefault();
 
     const newReserve = new FormData();
+
     newReserve.append("name", formData.name);
     newReserve.append("date", formData.date);
     newReserve.append("hour", JSON.stringify(formData.hour));
@@ -41,8 +51,13 @@ const CreateController = (): JSX.Element => {
     newReserve.append("image", formData.image);
     newReserve.append("numberPersons", JSON.stringify(formData.numberPersons));
 
-    dispatch(createReserveThunk(newReserve));
+    formData._id
+      ? dispatch(editReserveThunk(formData._id, formData))
+      : dispatch(createReserveThunk(newReserve));
+
     setFormData(clearFiles);
+
+    navigate("/home");
   };
 
   const uploadImage = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -127,7 +142,7 @@ const CreateController = (): JSX.Element => {
               </div>
             </label>
             <button className="login-form__button" type="submit">
-              Create
+              {location.pathname === "/add" ? "Create Reserve" : "Edit Reserve"}
             </button>
           </div>
         </form>

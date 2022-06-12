@@ -6,6 +6,20 @@ import mockListReserves from "../../mocks/mockReserves";
 import store from "../../redux/store/store";
 import ReservesCardComponent from "./ReservesCardComponent";
 
+const mockDispatch = jest.fn();
+const mockNavigate = jest.fn();
+
+jest.mock("../../redux/hooks/hooks", () => ({
+  ...jest.requireActual("../../redux/hooks/hooks"),
+  useAppDispatch: () => mockDispatch,
+}));
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+
+  useNavigate: () => mockNavigate,
+}));
+
 describe("Given the Check component", () => {
   describe("When it's invoked", () => {
     test("Then it should render one heading element", () => {
@@ -23,8 +37,8 @@ describe("Given the Check component", () => {
       expect(result).toHaveLength(expecResult);
     });
   });
-  describe("When the two inputs have text and the submit button is clicked", () => {
-    test("Then the two inputs should be empty", () => {
+  describe("when its clicked the button", () => {
+    test("then it should call dispatch", () => {
       render(
         <Provider store={store}>
           <BrowserRouter>
@@ -33,11 +47,26 @@ describe("Given the Check component", () => {
         </Provider>
       );
 
-      const submitButton = screen.getByRole("button");
+      const buttons = screen.getAllByRole("button");
+      userEvent.click(buttons[0]);
 
-      userEvent.click(submitButton);
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
+  describe("when its clicked the button Details", () => {
+    test("then it should call navigate", () => {
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <ReservesCardComponent reserves={mockListReserves[0]} />
+          </BrowserRouter>
+        </Provider>
+      );
 
-      expect(submitButton).toHaveValue("");
+      const buttons = screen.getAllByRole("button");
+      userEvent.click(buttons[1]);
+
+      expect(mockNavigate).toHaveBeenCalled();
     });
   });
 });
