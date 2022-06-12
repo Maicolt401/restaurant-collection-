@@ -18,6 +18,7 @@ const DetailPage = (): JSX.Element => {
   return (
     <>
       <NavLinkComponent />
+      <h1>Detail Reserve</h1>
       <ReserveDetail />
     </>
   );
