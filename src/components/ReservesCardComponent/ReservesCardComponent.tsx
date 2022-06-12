@@ -64,7 +64,7 @@ const ReservesCardComponent = ({
   };
 
   const handleDetail = (): void => {
-    navigate(`/edit/${_id}`);
+    navigate(`/detail/${_id}`);
     dispatch(getOneReserveThunk(_id));
   };
 

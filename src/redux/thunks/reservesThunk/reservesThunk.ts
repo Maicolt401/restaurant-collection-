@@ -71,7 +71,6 @@ export const editReserveThunk =
   (_id: string, formData: IReserves) => async (dispatch: AppDispatch) => {
     try {
       const token = localStorage.getItem("token");
-      console.log("tiene token");
 
       const { data: reserve } = await axios.put(
         `${process.env.REACT_APP_API_URL}/reserves/${_id}`,

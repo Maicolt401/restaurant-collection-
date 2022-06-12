@@ -14,6 +14,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CreatePage from "./pages/CreatePage/CreatePage";
 import DetailPage from "./pages/DetailPage/DetailPage";
+import EditPage from "./pages/editPage/editReserve";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
@@ -65,10 +66,18 @@ function App(): JSX.Element {
           }
         />
         <Route
-          path="/edit/:idReserves"
+          path="/detail/:idReserves"
           element={
             <AccesControlUnlogged>
               <DetailPage />
+            </AccesControlUnlogged>
+          }
+        />
+        <Route
+          path="/edit/:idReserves"
+          element={
+            <AccesControlUnlogged>
+              <EditPage />
             </AccesControlUnlogged>
           }
         />
