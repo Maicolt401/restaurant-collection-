@@ -1,5 +1,6 @@
 export interface IReserves {
   name: string;
+  oneReserve?: "";
   _id: string;
   DNI: string;
   image: string;

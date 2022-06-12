@@ -2,9 +2,9 @@ import mockListReserves from "../../../mocks/mockReserves";
 import { deleteReserveActionCreator } from "./reservesSlice";
 import reservesReducer from "./reservesSlice";
 
-describe("Given a NavLinkComponet component", () => {
-  describe("When it should the text `Home`", () => {
-    test("Then it show teh text 'Home'", () => {
+describe("Given a deleteReserve component", () => {
+  describe("When it should to reserve", () => {
+    test("Then it show in to the document whitout to reverse edit", () => {
       const initialState = { AllReserves: mockListReserves };
 
       const expectedState = {

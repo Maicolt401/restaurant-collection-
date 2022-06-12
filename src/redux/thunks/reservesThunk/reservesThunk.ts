@@ -1,6 +1,7 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { correctAction } from "../../../modals/modals";
+import { loadOneReserveActionCreator } from "../../feature/reservesSlice/oneReserveSlice";
 import {
   loadReservessActionCreator,
   deleteReserveActionCreator,
@@ -11,7 +12,6 @@ import { IReserves } from "../../types/reservesTypes";
 
 export const loadReservesThunks = () => async (dispatch: AppDispatch) => {
   const token = localStorage.getItem("token");
-
   if (token) {
     const {
       data: { reserves },
@@ -20,6 +20,7 @@ export const loadReservesThunks = () => async (dispatch: AppDispatch) => {
         authorization: `Bearer ${token}`,
       },
     });
+
     dispatch(loadReservessActionCreator(reserves));
   }
 };
@@ -61,6 +62,44 @@ export const createReserveThunk =
       localStorage.setItem("token", data.token);
 
       dispatch(createReserveActionCreator(userInfo));
+
       correctAction("NEW RESERVE CREATED");
+    } catch (error) {}
+  };
+
+export const editReserveThunk =
+  (_id: string, formData: IReserves) => async (dispatch: AppDispatch) => {
+    try {
+      const token = localStorage.getItem("token");
+      console.log("tiene token");
+
+      const { data: reserve } = await axios.put(
+        `${process.env.REACT_APP_API_URL}/reserves/${_id}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(loadOneReserveActionCreator(reserve));
+    } catch {}
+  };
+
+export const getOneReserveThunk =
+  (id: string) => async (dispatch: AppDispatch) => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const { data: reserve } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/reserves/${id}`,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(loadOneReserveActionCreator(reserve));
     } catch (error) {}
   };

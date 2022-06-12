@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CreatePage from "./pages/CreatePage/CreatePage";
+import DetailPage from "./pages/DetailPage/DetailPage";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
@@ -60,6 +61,14 @@ function App(): JSX.Element {
           element={
             <AccesControlUnlogged>
               <CreatePage />
+            </AccesControlUnlogged>
+          }
+        />
+        <Route
+          path="/edit/:idReserves"
+          element={
+            <AccesControlUnlogged>
+              <DetailPage />
             </AccesControlUnlogged>
           }
         />
