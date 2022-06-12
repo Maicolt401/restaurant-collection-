@@ -5,7 +5,11 @@ import {
   deleteReserveActionCreator,
   loadReservessActionCreator,
 } from "../../feature/reservesSlice/reservesSlice";
-import { deleteReserveThunk, loadReservesThunks } from "./reservesThunk";
+import {
+  createReserveThunk,
+  deleteReserveThunk,
+  loadReservesThunks,
+} from "./reservesThunk";
 
 beforeEach(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -60,6 +64,25 @@ describe("Given the deleteCheckThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).not.toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given a createCheckThunk", () => {
+  describe("When its called", () => {
+    test("then it should dispatch createCheckActionCreator", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.post = jest.fn().mockResolvedValue({
+        data: { newReserve: { mockListReserves } },
+        status: 201,
+      });
+
+      const thunk = createReserveThunk(mockListReserves[1]);
+      await thunk(dispatch());
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
