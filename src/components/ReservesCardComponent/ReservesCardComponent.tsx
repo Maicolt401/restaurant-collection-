@@ -80,7 +80,7 @@ const ReservesCardComponent = ({
             <button onClick={handleDelete}>
               <img src="image/delete.png" alt="delete icon" />
             </button>
-            <button onClick={handleDetail}>Edit Reserve</button>
+            <button onClick={handleDetail}>Detail Reserve</button>
           </section>
         </section>
       </ReserverStyled>
