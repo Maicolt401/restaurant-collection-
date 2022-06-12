@@ -1,8 +1,11 @@
 import axios from "axios";
 import mockListReserves from "../../../mocks/mockReserves";
 import { server } from "../../../mocks/server";
-import { loadReservessActionCreator } from "../../feature/reservesSlice/reservesSlice";
-import { loadReservesThunks } from "./reservesThunk";
+import {
+  deleteReserveActionCreator,
+  loadReservessActionCreator,
+} from "../../feature/reservesSlice/reservesSlice";
+import { deleteReserveThunk, loadReservesThunks } from "./reservesThunk";
 
 beforeEach(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -24,6 +27,39 @@ describe("Given a loadChecksThunk", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
+describe("Given the deleteCheckThunk function", () => {
+  describe("When it's called with an id", () => {
+    test("Then it should call dispatch with the loadChecks action with the checks received from the axios request", async () => {
+      const id = "2";
+      const dispatch = jest.fn();
+      const action = deleteReserveActionCreator(id);
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.delete = jest.fn().mockResolvedValue({ status: 200 });
+
+      const thunk = deleteReserveThunk(id);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+
+  describe("When it's called with an existent id", () => {
+    test("Then it should'nt call dispatch", async () => {
+      const id = "2";
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.delete = jest.fn().mockResolvedValue({});
+
+      const thunk = deleteReserveThunk(id);
+      await thunk(dispatch);
+
+      expect(dispatch).not.toHaveBeenCalled();
     });
   });
 });
