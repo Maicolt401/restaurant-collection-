@@ -20,6 +20,16 @@ const ReserverStyled = styled.div`
     background-color: white;
     font-size: 20px;
     main {
+      border: 1px;
+      font-family: sans-serif;
+      font-size: 1.3rem;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: inherit;
+      white-space: nowrap;
+      width: 205px;
+      margin: auto;
+
       font-size: 40px;
       margin-bottom: 2px;
       margin-left: 10px;
@@ -54,7 +64,7 @@ const ReserverStyled = styled.div`
 `;
 
 const ReservesCardComponent = ({
-  reserves: { name, hour, numberPersons, _id },
+  reserves: { name, hour, numberPersons, _id, date },
 }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -72,7 +82,7 @@ const ReservesCardComponent = ({
     <>
       <ReserverStyled>
         <section className="info">
-          <main>25th</main>
+          <main>{date}</main>
           <p> {name}</p>
           <p>{hour} hrs</p>
           <p>NUMBERS PERSONS: {numberPersons}PAX</p>

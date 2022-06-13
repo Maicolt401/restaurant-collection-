@@ -12,7 +12,6 @@ const ReserveDetail = (): JSX.Element => {
     navigate(`/edit/${oneReserve._id}`);
     dispatch(getOneReserveThunk(oneReserve._id));
   };
-
   const urlImage =
     "https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
 
@@ -22,7 +21,7 @@ const ReserveDetail = (): JSX.Element => {
       <span>{oneReserve.date}</span>
       <section className="info">
         <h2>{oneReserve.name}</h2>
-        <span>Times checked:</span>
+        <span>Hour</span>
         <section className="times">
           <span>{oneReserve.hour}</span>
         </section>

@@ -14,4 +14,5 @@ export interface IreservesSimple {
   _id: string;
   numberPersons: number;
   hour: number;
+  date: string;
 }
