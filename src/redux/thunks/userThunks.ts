@@ -30,7 +30,6 @@ export const loginThunk =
       localStorage.setItem("token", data.token);
 
       dispatch(loginActionCreator(userInfo));
-      correctAction("LOGGED");
     } catch {
       wrongAction("WRONG USERNAME OR PASSWORD");
     }
