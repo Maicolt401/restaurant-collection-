@@ -1,6 +1,7 @@
 import axios from "axios";
 import mockListReserves from "../../../mocks/mockReserves";
 import { server } from "../../../mocks/server";
+import { loadOneReserveActionCreator } from "../../feature/reservesSlice/oneReserveSlice";
 import {
   deleteReserveActionCreator,
   loadReservessActionCreator,
@@ -8,6 +9,7 @@ import {
 import {
   createReserveThunk,
   deleteReserveThunk,
+  getOneReserveThunk,
   loadReservesThunks,
 } from "./reservesThunk";
 
@@ -83,6 +85,25 @@ describe("Given a createCheckThunk", () => {
       await thunk(dispatch());
 
       expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
+describe("Given a loadOneCheckThunk", () => {
+  describe("When its called", () => {
+    test("then it should dispatch loadOneCheckActionCreator", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: mockListReserves[0], status: 200 });
+
+      const action = loadOneReserveActionCreator(mockListReserves[0]);
+      const thunk = getOneReserveThunk(mockListReserves[0]._id);
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
     });
   });
 });
