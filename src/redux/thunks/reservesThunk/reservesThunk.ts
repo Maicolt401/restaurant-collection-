@@ -1,6 +1,6 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { correctAction } from "../../../modals/modals";
+import { correctAction, loading, loadingOff } from "../../../modals/modals";
 import { loadOneReserveActionCreator } from "../../feature/reservesSlice/oneReserveSlice";
 import {
   loadReservessActionCreator,
@@ -20,8 +20,9 @@ export const loadReservesThunks = () => async (dispatch: AppDispatch) => {
         authorization: `Bearer ${token}`,
       },
     });
-
+    loading("LOADING...");
     dispatch(loadReservessActionCreator(reserves));
+    loadingOff();
   }
 };
 
@@ -62,7 +63,6 @@ export const createReserveThunk =
       localStorage.setItem("token", data.token);
 
       dispatch(createReserveActionCreator(userInfo));
-
       correctAction("NEW RESERVE CREATED");
     } catch (error) {}
   };

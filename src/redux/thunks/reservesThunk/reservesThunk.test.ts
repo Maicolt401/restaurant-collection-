@@ -88,6 +88,7 @@ describe("Given a createCheckThunk", () => {
     });
   });
 });
+
 describe("Given a loadOneCheckThunk", () => {
   describe("When its called", () => {
     test("then it should dispatch loadOneCheckActionCreator", async () => {
