@@ -108,10 +108,10 @@ const ReservesCardComponent = ({
           </div>
           <section className="delete">
             <button onClick={handleDelete}>
-              <img src="image/delete.png" alt="delete icon" />
+              <img src="image/delete.png" alt="delete reserve" />
             </button>
             <button onClick={handleDetail}>
-              <img src="image/edit.png" alt="edit icon" />
+              <img src="image/view.png" alt="view reserve" />
             </button>
           </section>
         </section>

@@ -74,4 +74,13 @@ const StyledNav = styled.div`
   }
 `;
 
+export const StyledBorder = styled.div`
+  border: 1px;
+  width: 100%;
+  top: 0px;
+  height: 45px;
+  position: fixed;
+  margin-bottom: 10px;
+  background-color: #f6efe8;
+`;
 export default StyledNav;

@@ -7,7 +7,7 @@ import ReservesPage from "./ReservesPage.";
 describe("Given a HomePage Component", () => {
   describe("When it's invoked", () => {
     test("Then it should render a button with the text logout'", () => {
-      const expectedResult = "Yours reservations";
+      const expectedResult = "Your reservations";
 
       render(
         <Provider store={store}>

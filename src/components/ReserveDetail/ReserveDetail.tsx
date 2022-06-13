@@ -1,6 +1,64 @@
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { getOneReserveThunk } from "../../redux/thunks/reservesThunk/reservesThunk";
+
+const DetailStyled = styled.div`
+  @media (max-width: 600px) {
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .detail {
+      border: 2px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      text-align: center;
+      border-radius: 45px;
+      .image {
+        padding-top: 10px;
+        border-radius: 25px;
+        width: 200px;
+        object-fit: cover;
+        height: 200px;
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .date {
+          border: 1px;
+          text-align: center;
+          font-family: sans-serif;
+          line-height: 1.4;
+          overflow: hidden;
+          text-overflow: inherit;
+          white-space: nowrap;
+          width: 162px;
+        }
+      }
+      .buttonClick {
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  @media (min-width: 599px) {
+    img {
+      width: 800px;
+      height: 800px;
+    }
+  }
+`;
 
 const ReserveDetail = (): JSX.Element => {
   const { oneReserve } = useAppSelector((state) => state.reserve);
@@ -17,18 +75,26 @@ const ReserveDetail = (): JSX.Element => {
 
   return (
     <>
-      <img src={oneReserve.imageBackup || urlImage} alt="person to reserve" />
-      <span>{oneReserve.date}</span>
-      <section className="info">
-        <h2>{oneReserve.name}</h2>
-        <span>Hour</span>
-        <section className="times">
-          <span>{oneReserve.hour}</span>
-        </section>
-        <span>Description:</span>
-        <p> {oneReserve.DNI} </p>
-      </section>
-      <button onClick={editReserve}>Edit</button>
+      <DetailStyled>
+        <div className="detail">
+          <img
+            src={oneReserve.imageBackup || urlImage}
+            alt="person to reserve"
+            className="image"
+          />
+          <h2>{oneReserve.name}</h2>
+
+          <section className="info">
+            <span className="date">Date: {oneReserve.date}</span>
+            <span> Hour: {oneReserve.hour} hrs</span>
+            <span>DNI:{oneReserve.DNI}</span>
+            <span> Number Persons:{oneReserve.numberPersons} </span>
+          </section>
+          <button className="buttonClick" onClick={editReserve}>
+            <img src="image/edit.png" alt="edit icon" />
+          </button>
+        </div>
+      </DetailStyled>
     </>
   );
 };

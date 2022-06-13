@@ -6,6 +6,7 @@ const ReserverStyled = styled.div`
   color: #a93528;
 
   h1 {
+    margin-top: 45px;
     text-align: center;
   }
 `;
@@ -15,7 +16,7 @@ const ReservesPage = (): JSX.Element => {
     <>
       <NavLinkComponent />
       <ReserverStyled>
-        <h1>Yours reservations</h1>
+        <h1>Your reservations</h1>
       </ReserverStyled>
       <ListReservesCardComponent />
     </>
