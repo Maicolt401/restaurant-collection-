@@ -54,7 +54,6 @@ const ReserverStyled = styled.div`
       }
 
       button {
-        margin-left: 250px;
         cursor: pointer;
         border: none;
         background: none;
