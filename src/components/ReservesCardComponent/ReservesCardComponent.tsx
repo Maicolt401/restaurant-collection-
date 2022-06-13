@@ -13,62 +13,127 @@ interface Props {
 
 const ReserverStyled = styled.div`
   color: #a93528;
+  @media (min-width: 601px) {
+    margin-left: 350px;
+    .info {
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      display: flex;
+      border: 5px;
+      margin: 20px;
+      background-color: white;
+      font-size: 20px;
 
-  .info {
-    align-items: center;
-    flex-direction: column;
-    display: flex;
-    border: 5px;
-    margin: 20px;
-    background-color: white;
-    font-size: 20px;
+      .image {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+      }
 
-    .image {
-      height: 150px;
-      width: 150px;
-      object-fit: cover;
-    }
+      main {
+        border: 1px;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 1.3rem;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: inherit;
+        white-space: nowrap;
+        width: 205px;
+        margin-right: 0px;
+        font-size: 40px;
+        margin-bottom: 2px;
+        margin-left: 10px;
+      }
 
-    main {
-      border: 1px;
-      text-align: center;
-      font-family: sans-serif;
-      font-size: 1.3rem;
-      line-height: 1.4;
-      overflow: hidden;
-      text-overflow: inherit;
-      white-space: nowrap;
-      width: 205px;
-      margin-right: 0px;
-      font-size: 40px;
-      margin-bottom: 2px;
-      margin-left: 10px;
-    }
+      p {
+        margin-left: 10px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+      }
 
-    p {
-      margin-left: 10px;
-      margin-bottom: 0px;
-      margin-top: 0px;
-    }
+      button {
+        margin-left: 250px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
 
-    button {
-      cursor: pointer;
-      border: none;
-      background: none;
-      padding: 0;
+        img {
+          width: 35px;
+          height: 35px;
+          margin-right: 10px;
+        }
+      }
 
-      img {
-        width: 35px;
-        height: 35px;
-        margin-right: 10px;
+      .delete {
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        flex-direction: column;
       }
     }
+  }
 
-    .delete {
-      height: 100%;
-      display: flex;
-      justify-content: end;
+  @media (max-width: 600px) {
+    .info {
       align-items: center;
+      flex-direction: column;
+      display: flex;
+      border: 5px;
+      margin: 20px;
+      background-color: white;
+      font-size: 20px;
+
+      .image {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+      }
+
+      main {
+        border: 1px;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 1.3rem;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: inherit;
+        white-space: nowrap;
+        width: 205px;
+        margin-right: 0px;
+        font-size: 40px;
+        margin-bottom: 2px;
+        margin-left: 10px;
+      }
+
+      p {
+        margin-left: 10px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
+
+        img {
+          width: 35px;
+          height: 35px;
+          margin-right: 10px;
+        }
+      }
+
+      .delete {
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
     }
   }
 `;
