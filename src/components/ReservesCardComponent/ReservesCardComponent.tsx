@@ -22,9 +22,11 @@ const ReserverStyled = styled.div`
     margin: 20px;
     background-color: white;
     font-size: 20px;
+
     .image {
       height: 150px;
       width: 150px;
+      object-fit: cover;
     }
 
     main {
@@ -97,11 +99,13 @@ const ReservesCardComponent = ({
           <p> {name}</p>
           <p>{hour} hrs</p>
           <p>NUMBERS PERSONS: {numberPersons}PAX</p>
-          <img
-            src={imageBackup || urlImage}
-            alt="reserve id"
-            className="image"
-          />
+          <div className="contain_Image">
+            <img
+              src={imageBackup || urlImage}
+              alt="reserve id"
+              className="image"
+            />
+          </div>
           <section className="delete">
             <button onClick={handleDelete}>
               <img src="image/delete.png" alt="delete icon" />
