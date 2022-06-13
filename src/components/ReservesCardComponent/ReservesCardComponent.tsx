@@ -15,12 +15,21 @@ const ReserverStyled = styled.div`
   color: #a93528;
 
   .info {
+    align-items: center;
+    flex-direction: column;
+    display: flex;
     border: 5px;
     margin: 20px;
     background-color: white;
     font-size: 20px;
+    .image {
+      height: 150px;
+      width: 150px;
+    }
+
     main {
       border: 1px;
+      text-align: center;
       font-family: sans-serif;
       font-size: 1.3rem;
       line-height: 1.4;
@@ -28,8 +37,7 @@ const ReserverStyled = styled.div`
       text-overflow: inherit;
       white-space: nowrap;
       width: 205px;
-      margin: auto;
-
+      margin-right: 0px;
       font-size: 40px;
       margin-bottom: 2px;
       margin-left: 10px;
@@ -64,7 +72,7 @@ const ReserverStyled = styled.div`
 `;
 
 const ReservesCardComponent = ({
-  reserves: { name, hour, numberPersons, _id, date },
+  reserves: { name, hour, numberPersons, _id, date, imageBackup },
 }: Props): JSX.Element => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -78,6 +86,9 @@ const ReservesCardComponent = ({
     dispatch(getOneReserveThunk(_id));
   };
 
+  const urlImage =
+    "https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
+
   return (
     <>
       <ReserverStyled>
@@ -86,11 +97,18 @@ const ReservesCardComponent = ({
           <p> {name}</p>
           <p>{hour} hrs</p>
           <p>NUMBERS PERSONS: {numberPersons}PAX</p>
+          <img
+            src={imageBackup || urlImage}
+            alt="reserve id"
+            className="image"
+          />
           <section className="delete">
             <button onClick={handleDelete}>
               <img src="image/delete.png" alt="delete icon" />
             </button>
-            <button onClick={handleDetail}>Detail Reserve</button>
+            <button onClick={handleDetail}>
+              <img src="image/edit.png" alt="edit icon" />
+            </button>
           </section>
         </section>
       </ReserverStyled>

@@ -23,7 +23,7 @@ jest.mock("react-router-dom", () => ({
 describe("Given the Check component", () => {
   describe("When it's invoked", () => {
     test("Then it should render one heading element", () => {
-      const expecResult = 1;
+      const expecResult = 3;
       render(
         <Provider store={store}>
           <BrowserRouter>

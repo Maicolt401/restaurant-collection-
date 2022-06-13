@@ -17,7 +17,7 @@ const ReserveDetail = (): JSX.Element => {
 
   return (
     <>
-      <img src={oneReserve.image ? urlImage : ""} alt="person to reserve" />
+      <img src={oneReserve.imageBackup || urlImage} alt="person to reserve" />
       <span>{oneReserve.date}</span>
       <section className="info">
         <h2>{oneReserve.name}</h2>

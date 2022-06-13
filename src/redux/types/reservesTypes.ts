@@ -4,6 +4,7 @@ export interface IReserves {
   _id: string;
   DNI: string;
   image: string;
+  imageBackup?: string;
   date: string;
   hour: number;
   numberPersons: number;
@@ -15,4 +16,5 @@ export interface IreservesSimple {
   numberPersons: number;
   hour: number;
   date: string;
+  imageBackup?: string;
 }

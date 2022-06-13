@@ -7,6 +7,7 @@ import {
 } from "../../redux/thunks/reservesThunk/reservesThunk";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IReserves } from "../../redux/types/reservesTypes";
+import { blankStateActionCreator } from "../../redux/feature/reservesSlice/oneReserveSlice";
 
 const CreateController = (): JSX.Element => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const CreateController = (): JSX.Element => {
   const { idReserves } = useParams();
   const dispatch = useAppDispatch();
   const { reserves } = useAppSelector((state) => state);
+
   const editReserve = reserves.AllReserves.find(
     (reserve: IReserves) => oneReserve._id === idReserves
   );
@@ -26,6 +28,7 @@ const CreateController = (): JSX.Element => {
     DNI: editReserve ? editReserve.DNI : "",
     image: editReserve ? editReserve.image : "",
     hour: editReserve ? editReserve.hour : 0,
+    imageBackup: editReserve ? editReserve.imageBackup : "",
     numberPersons: editReserve ? editReserve.numberPersons : 0,
   };
   const [formData, setFormData] = useState(clearFiles);
@@ -49,12 +52,15 @@ const CreateController = (): JSX.Element => {
     newReserve.append("hour", `${formData.hour}`);
     newReserve.append("DNI", formData.DNI);
     newReserve.append("image", formData.image);
+    if (formData.imageBackup) {
+      newReserve.append("image", formData.imageBackup);
+    }
     newReserve.append("numberPersons", `${formData.numberPersons}`);
 
     formData._id
       ? dispatch(editReserveThunk(formData._id, formData))
       : dispatch(createReserveThunk(newReserve));
-
+    dispatch(blankStateActionCreator());
     setFormData(clearFiles);
 
     navigate("/home");
@@ -95,6 +101,7 @@ const CreateController = (): JSX.Element => {
                 type="number"
                 id="hour"
                 placeholder="hour"
+                value={formData.hour}
                 onChange={handleInputChange}
               />
             </label>
@@ -105,6 +112,7 @@ const CreateController = (): JSX.Element => {
                 type="number"
                 id="numberPersons"
                 placeholder="numberPersons"
+                value={formData.numberPersons}
                 onChange={handleInputChange}
               />
             </label>
@@ -134,7 +142,7 @@ const CreateController = (): JSX.Element => {
               Image
               <div className="login-form__Image">
                 <input
-                  id="image"
+                  id="imageBackup"
                   type="file"
                   autoComplete="off"
                   onChange={uploadImage}
