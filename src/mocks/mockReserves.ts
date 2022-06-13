@@ -7,6 +7,7 @@ const mockListReserves = [
     DNI: "asdasd6526",
     date: "18/03/2022",
     image: "image/asda564",
+    imageBackup: "image/asdasdsad",
   },
   {
     name: "maria cristhina",
@@ -16,6 +17,7 @@ const mockListReserves = [
     DNI: "asdasd6526",
     date: "18/03/2022",
     image: "image/asda564",
+    imageBackup: "image/asdasdsad",
   },
 ];
 

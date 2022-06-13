@@ -17,6 +17,7 @@ describe("Given a deleteReserve component", () => {
             DNI: mockListReserves[1].DNI,
             date: mockListReserves[1].date,
             image: mockListReserves[1].image,
+            imageBackup: mockListReserves[1].imageBackup,
           },
         ],
       };

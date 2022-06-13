@@ -10,6 +10,7 @@ const initialState: ReserveState = {
     _id: "",
     name: "",
     DNI: "",
+    imageBackup: "",
     image: "",
     date: "",
     hour: 0,
@@ -24,10 +25,13 @@ const oneReserveSlice = createSlice({
     loadOneReserve: (reserve, action: PayloadAction<IReserves>) => ({
       oneReserve: { ...action.payload },
     }),
+    blankState: () => initialState,
   },
 });
 
 export default oneReserveSlice.reducer;
 
-export const { loadOneReserve: loadOneReserveActionCreator } =
-  oneReserveSlice.actions;
+export const {
+  loadOneReserve: loadOneReserveActionCreator,
+  blankState: blankStateActionCreator,
+} = oneReserveSlice.actions;

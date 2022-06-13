@@ -74,6 +74,7 @@ export const editReserveThunk =
 
       const { data: reserve } = await axios.put(
         `${process.env.REACT_APP_API_URL}/reserves/${_id}`,
+        formData,
         {
           headers: {
             authorization: `Bearer ${token}`,
