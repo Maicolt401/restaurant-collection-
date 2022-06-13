@@ -11,11 +11,12 @@ import { IReserves } from "../../redux/types/reservesTypes";
 const CreateController = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { _id } = useParams();
+  const { oneReserve } = useAppSelector((state) => state.reserve);
+  const { idReserves } = useParams();
   const dispatch = useAppDispatch();
   const { reserves } = useAppSelector((state) => state);
   const editReserve = reserves.AllReserves.find(
-    (reserve: IReserves) => reserve._id === _id
+    (reserve: IReserves) => oneReserve._id === idReserves
   );
 
   const clearFiles = {
@@ -27,7 +28,6 @@ const CreateController = (): JSX.Element => {
     hour: editReserve ? editReserve.hour : 0,
     numberPersons: editReserve ? editReserve.numberPersons : 0,
   };
-
   const [formData, setFormData] = useState(clearFiles);
 
   const handleInputChange = (
@@ -46,10 +46,10 @@ const CreateController = (): JSX.Element => {
 
     newReserve.append("name", formData.name);
     newReserve.append("date", formData.date);
-    newReserve.append("hour", JSON.stringify(formData.hour));
+    newReserve.append("hour", `${formData.hour}`);
     newReserve.append("DNI", formData.DNI);
     newReserve.append("image", formData.image);
-    newReserve.append("numberPersons", JSON.stringify(formData.numberPersons));
+    newReserve.append("numberPersons", `${formData.numberPersons}`);
 
     formData._id
       ? dispatch(editReserveThunk(formData._id, formData))
