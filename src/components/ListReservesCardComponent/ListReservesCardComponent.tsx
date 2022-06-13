@@ -3,7 +3,25 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadReservesThunks } from "../../redux/thunks/reservesThunk/reservesThunk";
 import { IreservesSimple } from "../../redux/types/reservesTypes";
 import ReservesCardComponent from "../ReservesCardComponent/ReservesCardComponent";
+import styled from "styled-components";
 
+const ReserverStyled = styled.div`
+  .page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+`;
 const ListReservesCardComponent = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
@@ -34,26 +52,28 @@ const ListReservesCardComponent = (): JSX.Element => {
       {currentPage.map((reserve, index) => {
         return <ReservesCardComponent key={index} reserves={reserve} />;
       })}
-      <div className="page">
-        <button
-          onClick={() => {
-            if (index >= 4) {
-              setIndex(index - 4);
-            }
-          }}
-        >
-          Prev
-        </button>
-        <button
-          onClick={() => {
-            if (index < AllReserves.length - 4) {
-              setIndex(index + 4);
-            }
-          }}
-        >
-          Next
-        </button>
-      </div>
+      <ReserverStyled>
+        <div className="page">
+          <button
+            onClick={() => {
+              if (index >= 4) {
+                setIndex(index - 4);
+              }
+            }}
+          >
+            <img src="image/previus.png" alt="previus icon" />
+          </button>
+          <button
+            onClick={() => {
+              if (index < AllReserves.length - 4) {
+                setIndex(index + 4);
+              }
+            }}
+          >
+            <img src="image/next.png" alt="next icon" />
+          </button>
+        </div>
+      </ReserverStyled>
     </>
   );
 };
