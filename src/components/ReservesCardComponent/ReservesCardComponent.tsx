@@ -14,7 +14,7 @@ interface Props {
 const ReserverStyled = styled.div`
   color: #a93528;
   @media (min-width: 601px) {
-    margin-left: 350px;
+    margin-left: 23%;
     .info {
       align-items: center;
       flex-direction: row;
@@ -26,6 +26,7 @@ const ReserverStyled = styled.div`
       font-size: 20px;
 
       .image {
+        border-radius: 45px;
         height: 150px;
         width: 150px;
         object-fit: cover;
@@ -35,14 +36,12 @@ const ReserverStyled = styled.div`
         border: 1px;
         text-align: center;
         font-family: sans-serif;
-        font-size: 1.3rem;
         line-height: 1.4;
         overflow: hidden;
         text-overflow: inherit;
         white-space: nowrap;
-        width: 205px;
+        width: 102px;
         margin-right: 0px;
-        font-size: 40px;
         margin-bottom: 2px;
         margin-left: 10px;
       }
@@ -82,11 +81,13 @@ const ReserverStyled = styled.div`
       flex-direction: column;
       display: flex;
       border: 5px;
+      border-radius: 25px;
       margin: 20px;
       background-color: white;
       font-size: 20px;
 
       .image {
+        border-radius: 45px;
         height: 150px;
         width: 150px;
         object-fit: cover;
@@ -96,7 +97,6 @@ const ReserverStyled = styled.div`
         border: 1px;
         text-align: center;
         font-family: sans-serif;
-        font-size: 1.3rem;
         line-height: 1.4;
         overflow: hidden;
         text-overflow: inherit;
@@ -162,7 +162,7 @@ const ReservesCardComponent = ({
           <main>{date}</main>
           <p> {name}</p>
           <p>{hour} hrs</p>
-          <p>NUMBERS PERSONS: {numberPersons}PAX</p>
+          <p>CANT. PERSONS: {numberPersons}PAX</p>
           <div className="contain_Image">
             <img
               src={imageBackup || urlImage}

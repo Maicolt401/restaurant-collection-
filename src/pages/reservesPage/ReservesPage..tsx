@@ -9,6 +9,11 @@ const ReserverStyled = styled.div`
     margin-top: 45px;
     text-align: center;
   }
+  @media (min-width: 601px) {
+    h1 {
+      margin-left: 25%;
+    }
+  }
 `;
 
 const ReservesPage = (): JSX.Element => {

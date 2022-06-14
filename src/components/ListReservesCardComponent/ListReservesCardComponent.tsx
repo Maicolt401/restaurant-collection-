@@ -6,6 +6,12 @@ import ReservesCardComponent from "../ReservesCardComponent/ReservesCardComponen
 import styled from "styled-components";
 
 const ReserverStyled = styled.div`
+  @media (min-width: 601px) {
+    .page {
+      margin-left: 25%;
+    }
+  }
+
   .page {
     display: flex;
     flex-direction: row;

@@ -18,7 +18,7 @@ const CreateController = (): JSX.Element => {
   const { reserves } = useAppSelector((state) => state);
 
   const editReserve = reserves.AllReserves.find(
-    (reserve: IReserves) => oneReserve._id === idReserves
+    (reserve: IReserves) => reserve._id === idReserves
   );
 
   const clearFiles = {
@@ -56,13 +56,12 @@ const CreateController = (): JSX.Element => {
       newReserve.append("image", formData.imageBackup);
     }
     newReserve.append("numberPersons", `${formData.numberPersons}`);
-
+    console.log(oneReserve);
     formData._id
       ? dispatch(editReserveThunk(formData._id, formData))
       : dispatch(createReserveThunk(newReserve));
     dispatch(blankStateActionCreator());
     setFormData(clearFiles);
-
     navigate("/home");
   };
 
