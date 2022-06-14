@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CreatePage from "./pages/CreatePage/CreatePage";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import EditPage from "./pages/editPage/editReserve";
+import CalendarPage from "./pages/CalendarPage/CalendarPage";
 
 function App(): JSX.Element {
   const { logged } = useAppSelector((state) => state.user);
@@ -78,6 +79,14 @@ function App(): JSX.Element {
           element={
             <AccesControlUnlogged>
               <EditPage />
+            </AccesControlUnlogged>
+          }
+        />
+        <Route
+          path="/calendary"
+          element={
+            <AccesControlUnlogged>
+              <CalendarPage />
             </AccesControlUnlogged>
           }
         />
