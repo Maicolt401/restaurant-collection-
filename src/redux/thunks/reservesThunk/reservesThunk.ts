@@ -83,6 +83,7 @@ export const editReserveThunk =
       );
 
       dispatch(loadOneReserveActionCreator(reserve));
+      correctAction("reserve edited ");
     } catch {}
   };
 

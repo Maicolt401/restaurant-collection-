@@ -48,7 +48,10 @@ const CreateController = (): JSX.Element => {
     const newReserve = new FormData();
 
     newReserve.append("name", formData.name);
-    newReserve.append("date", formData.date);
+    newReserve.append(
+      "date",
+      new Date(formData.date).toISOString().split("T")[0]
+    );
     newReserve.append("hour", `${formData.hour}`);
     newReserve.append("DNI", formData.DNI);
     newReserve.append("image", formData.image);
@@ -97,7 +100,7 @@ const CreateController = (): JSX.Element => {
               Hour
               <input
                 className="login-form__input"
-                type="number"
+                type="time"
                 id="hour"
                 placeholder="hour"
                 value={formData.hour}
