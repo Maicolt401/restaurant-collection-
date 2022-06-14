@@ -53,9 +53,51 @@ const DetailStyled = styled.div`
   }
 
   @media (min-width: 599px) {
-    img {
-      width: 800px;
-      height: 800px;
+    width: 100%;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .detail {
+      border: 2px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 450px;
+      text-align: center;
+      border-radius: 45px;
+      .image {
+        padding-top: 10px;
+        border-radius: 25px;
+        width: 300px;
+        object-fit: cover;
+        height: 300px;
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .date {
+          border: 1px;
+          text-align: center;
+          font-family: sans-serif;
+          line-height: 1.4;
+          overflow: hidden;
+          text-overflow: inherit;
+          white-space: nowrap;
+          width: 162px;
+        }
+      }
+      .buttonClick {
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 0;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
     }
   }
 `;
@@ -70,6 +112,7 @@ const ReserveDetail = (): JSX.Element => {
     navigate(`/edit/${oneReserve._id}`);
     dispatch(getOneReserveThunk(oneReserve._id));
   };
+
   const urlImage =
     "https://www.nicepng.com/png/detail/202-2022264_usuario-annimo-usuario-annimo-user-icon-png-transparent.png";
 
