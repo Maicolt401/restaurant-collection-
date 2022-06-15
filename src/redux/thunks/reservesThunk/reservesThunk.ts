@@ -1,5 +1,4 @@
 import axios from "axios";
-import jwtDecode from "jwt-decode";
 import { correctAction, loading, loadingOff } from "../../../modals/modals";
 import { loadOneReserveActionCreator } from "../../feature/reservesSlice/oneReserveSlice";
 import {
@@ -50,7 +49,9 @@ export const createReserveThunk =
   (userData: any) => async (dispatch: AppDispatch) => {
     try {
       const token = localStorage.getItem("token");
-      const { data } = await axios.post(
+      const {
+        data: { newReserve },
+      } = await axios.post(
         `${process.env.REACT_APP_API_URL}/reserves/create`,
         userData,
         {
@@ -60,10 +61,10 @@ export const createReserveThunk =
           },
         }
       );
+
+      loading("CREATING RESERVATION...");
       correctAction("NEW RESERVE CREATED");
-      const userInfo: IReserves = jwtDecode(data.token);
-      localStorage.setItem("token", data.token);
-      dispatch(createReserveActionCreator(userInfo));
+      dispatch(createReserveActionCreator(newReserve));
     } catch (error) {}
   };
 

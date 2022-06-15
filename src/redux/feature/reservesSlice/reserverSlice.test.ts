@@ -1,6 +1,5 @@
 import mockListReserves from "../../../mocks/mockReserves";
-import { deleteReserveActionCreator } from "./reservesSlice";
-import reservesReducer from "./reservesSlice";
+import reservesReducer, { deleteReserveActionCreator } from "./reservesSlice";
 
 describe("Given a deleteReserve component", () => {
   describe("When it should to reserve", () => {

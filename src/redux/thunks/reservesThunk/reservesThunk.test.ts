@@ -19,9 +19,9 @@ beforeEach(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-describe("Given a loadChecksThunk", () => {
+describe("Given a loadReservesThunk", () => {
   describe("When its called", () => {
-    test("then it should dispatch loadChecksActionCreator", async () => {
+    test("then it should dispatch loadReservessActionCreator", async () => {
       const dispatch = jest.fn();
       const action = loadReservessActionCreator(mockListReserves);
 
@@ -39,9 +39,9 @@ describe("Given a loadChecksThunk", () => {
   });
 });
 
-describe("Given the deleteCheckThunk function", () => {
+describe("Given the DeleteReservesThunk function", () => {
   describe("When it's called with an id", () => {
-    test("Then it should call dispatch with the loadChecks action with the checks received from the axios request", async () => {
+    test("Then it should call dispatch with the loadReserves action with the reserves received from the axios request", async () => {
       const id = "2";
       const dispatch = jest.fn();
       const action = deleteReserveActionCreator(id);
@@ -72,9 +72,9 @@ describe("Given the deleteCheckThunk function", () => {
   });
 });
 
-describe("Given a createCheckThunk", () => {
+describe("Given a createReservesThunk", () => {
   describe("When its called", () => {
-    test("then it should dispatch createCheckActionCreator", async () => {
+    test("then it should dispatch createReserveActionCreator", async () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
@@ -91,9 +91,29 @@ describe("Given a createCheckThunk", () => {
   });
 });
 
-describe("Given a loadOneCheckThunk", () => {
+describe("Given a getOneReserveThunk", () => {
   describe("When its called", () => {
-    test("then it should dispatch loadOneCheckActionCreator", async () => {
+    test("then it should dispatch loadOneReserverActionCreator", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: mockListReserves[0], status: 200 });
+
+      const action = loadOneReserveActionCreator(mockListReserves[0]);
+      const thunk = getOneReserveThunk(mockListReserves[0]._id);
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
+describe("Given a loadOneReserve", () => {
+  describe("When its called", () => {
+    test("then it should dispatch loadOneReserveActionCreator", async () => {
       const dispatch = jest.fn();
 
       jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
