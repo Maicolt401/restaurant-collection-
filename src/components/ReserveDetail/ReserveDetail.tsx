@@ -142,8 +142,7 @@ const ReserveDetail = (): JSX.Element => {
             <span> Number Persons:{oneReserve.numberPersons} </span>
           </section>
           <button className="buttonClick" onClick={editReserve}>
-            <p>Edit Reserve</p>{" "}
-            {/* <img src="image/edit.png" alt="edit icon" /> */}
+            <p>Edit Reserve</p>
           </button>
         </div>
       </DetailStyled>

@@ -82,7 +82,7 @@ const CreateController = (): JSX.Element => {
           onSubmit={handleSubmit}
         >
           <div className="login-form__wrapper">
-            <label className="login-form__label" htmlFor="RestaurantName">
+            <label className="login-form__label" htmlFor="name">
               Name
               <input
                 className="login-form__input"
@@ -93,7 +93,7 @@ const CreateController = (): JSX.Element => {
                 onChange={handleInputChange}
               />
             </label>
-            <label className="login-form__label" htmlFor="CIF">
+            <label className="login-form__label" htmlFor="hour">
               Hour
               <input
                 className="login-form__input"
@@ -104,7 +104,7 @@ const CreateController = (): JSX.Element => {
                 onChange={handleInputChange}
               />
             </label>
-            <label className="login-form__label" htmlFor="username">
+            <label className="login-form__label" htmlFor="numberPersons">
               Number People
               <input
                 className="login-form__input"
