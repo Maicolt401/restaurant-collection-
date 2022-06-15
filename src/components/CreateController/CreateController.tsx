@@ -12,7 +12,6 @@ import { blankStateActionCreator } from "../../redux/feature/reservesSlice/oneRe
 const CreateController = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { oneReserve } = useAppSelector((state) => state.reserve);
   const { idReserves } = useParams();
   const dispatch = useAppDispatch();
   const { reserves } = useAppSelector((state) => state);
@@ -59,7 +58,6 @@ const CreateController = (): JSX.Element => {
       newReserve.append("image", formData.imageBackup);
     }
     newReserve.append("numberPersons", `${formData.numberPersons}`);
-    console.log(oneReserve);
     formData._id
       ? dispatch(editReserveThunk(formData._id, formData))
       : dispatch(createReserveThunk(newReserve));

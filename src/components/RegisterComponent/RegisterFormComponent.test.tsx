@@ -37,7 +37,6 @@ describe("Given a FormComponent function", () => {
 
       expect(screen.getAllByText("Username")).toHaveLength(1);
       expect(screen.getAllByText("Password")).toHaveLength(1);
-      expect(screen.getAllByText("CIF")).toHaveLength(1);
       expect(screen.getAllByText("Restaurant Name")).toHaveLength(1);
     });
   });

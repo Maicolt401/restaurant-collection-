@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import NavLinkComponent from "../../components/NavLinkComponent/NavLinkComponent";
 
@@ -24,36 +23,20 @@ const StyledPageCreate = styled.div`
 `;
 
 const CalendarPage = (): JSX.Element => {
-  const clearFiles = {
-    date: "",
-  };
-  const [formData, setFormData] = useState(clearFiles);
-
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    setFormData({
-      ...formData,
-      [event.target.id]: event.target.value,
-    });
-  };
-
-  console.log(formData);
-
   return (
     <>
       <NavLinkComponent />
       <StyledPageCreate>
         <h1>Calendary</h1>
       </StyledPageCreate>
-      <label className="login-form__label" htmlFor="username">
+      <label
+        id="date
+      "
+        className="login-form__label"
+        htmlFor="username"
+      >
         Date
-        <input
-          className="login-form__input"
-          type="Date"
-          id="Date"
-          onChange={handleInputChange}
-        />
+        <input className="login-form__input" type="date" id="calendar" />
       </label>
       <button type="submit">search</button>
     </>
