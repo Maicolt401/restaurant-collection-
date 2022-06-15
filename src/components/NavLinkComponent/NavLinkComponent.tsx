@@ -30,11 +30,7 @@ const NavLinkComponent = (): JSX.Element => {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/calendary" className="menu__item">
-                  Calendary
-                </NavLink>
-              </li>
+
               <li>
                 <NavLink to="/add" className="menu__item">
                   Add New Reserve

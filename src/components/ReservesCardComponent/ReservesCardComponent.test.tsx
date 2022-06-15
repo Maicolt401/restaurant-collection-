@@ -8,6 +8,11 @@ import ReservesCardComponent from "./ReservesCardComponent";
 
 const mockDispatch = jest.fn();
 const mockNavigate = jest.fn();
+const mockUseNavigate = jest.fn();
+
+jest.mock("react-router-dom", () => ({
+  useNavigate: () => mockUseNavigate,
+}));
 
 jest.mock("../../redux/hooks/hooks", () => ({
   ...jest.requireActual("../../redux/hooks/hooks"),
@@ -37,6 +42,7 @@ describe("Given the Check component", () => {
       expect(result).toHaveLength(expecResult);
     });
   });
+
   describe("when its clicked the button", () => {
     test("then it should call dispatch", () => {
       render(
@@ -53,6 +59,7 @@ describe("Given the Check component", () => {
       expect(mockDispatch).toHaveBeenCalled();
     });
   });
+
   describe("when its clicked the button Details", () => {
     test("then it should call navigate", () => {
       render(
@@ -67,6 +74,23 @@ describe("Given the Check component", () => {
       userEvent.click(buttons[1]);
 
       expect(mockNavigate).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it should  in the document a img", () => {
+    test("Then it show should in te document a img its the same to 1", () => {
+      const expecResult = 3;
+      render(
+        <Provider store={store}>
+          <BrowserRouter>
+            <ReservesCardComponent reserves={mockListReserves[0]} />
+          </BrowserRouter>
+        </Provider>
+      );
+
+      const expectedImg = screen.getAllByRole("img");
+
+      expect(expectedImg).toHaveLength(expecResult);
     });
   });
 });

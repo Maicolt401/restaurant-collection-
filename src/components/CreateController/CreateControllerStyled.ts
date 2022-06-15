@@ -18,10 +18,10 @@ const StyledComponentCreate = styled.div`
     &__label {
       font-weight: 400;
       font-size: 1.3rem;
-      color: white;
     }
 
     &__input {
+      margin-bottom: 15px;
       width: calc(100% - 2rem);
       border: 1px solid #222;
       border-radius: 0.375rem;

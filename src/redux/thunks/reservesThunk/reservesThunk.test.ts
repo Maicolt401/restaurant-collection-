@@ -4,11 +4,13 @@ import { server } from "../../../mocks/server";
 import { loadOneReserveActionCreator } from "../../feature/reservesSlice/oneReserveSlice";
 import {
   deleteReserveActionCreator,
+  editReserveActionCreator,
   loadReservessActionCreator,
 } from "../../feature/reservesSlice/reservesSlice";
 import {
   createReserveThunk,
   deleteReserveThunk,
+  editReserveThunk,
   getOneReserveThunk,
   loadReservesThunks,
 } from "./reservesThunk";
@@ -102,6 +104,34 @@ describe("Given a loadOneCheckThunk", () => {
       const action = loadOneReserveActionCreator(mockListReserves[0]);
       const thunk = getOneReserveThunk(mockListReserves[0]._id);
 
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
+describe("Given the editNoteThunk function", () => {
+  describe("When it's called with an id to edit and a note", () => {
+    test("Then it should call dispatch with the new note edited received from the axios request", async () => {
+      const dispatch = jest.fn();
+      const action = editReserveActionCreator(mockListReserves[0]);
+
+      const mockNewReserve = {
+        name: "maria cristhina",
+        _id: "2312",
+        hour: 19,
+        numberPersons: 8,
+        DNI: "asdasd6526",
+        date: "18/03/2022",
+        image: "image/asda564",
+        imageBackup: "image/asdasdsad",
+      };
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.put = jest.fn().mockResolvedValue({ data: mockListReserves[0] });
+
+      const thunk = editReserveThunk(mockListReserves[0]._id, mockNewReserve);
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(action);

@@ -13,6 +13,16 @@ const ReserverStyled = styled.div`
     margin-top: 45px;
     text-align: center;
   }
+  a {
+    text-decoration: none;
+    color: #a93528;
+    text-align: center;
+    display: flex;
+    text-decoration: underline;
+    flex-direction: column;
+    padding-top: 25px;
+    padding-bottom: 35px;
+  }
 `;
 
 const DetailPage = (): JSX.Element => {
@@ -30,10 +40,10 @@ const DetailPage = (): JSX.Element => {
       <NavLinkComponent />
       <ReserverStyled>
         <h1>Detail Reserve</h1>
-      </ReserverStyled>
 
-      <NavLink to="/home"> go back</NavLink>
-      <ReserveDetail />
+        <ReserveDetail />
+        <NavLink to="/home"> Go to Back</NavLink>
+      </ReserverStyled>
     </>
   );
 };

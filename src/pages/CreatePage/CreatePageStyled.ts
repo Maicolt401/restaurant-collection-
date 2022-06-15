@@ -6,6 +6,7 @@ const StyledPageCreate = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 35px;
   color: #a93528;
   padding-bottom: 20px;
 
