@@ -25,9 +25,9 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockNavigate,
 }));
 
-describe("Given the Check component", () => {
+describe("Given the ReserverCarComponent component", () => {
   describe("When it's invoked", () => {
-    test("Then it should render one heading element", () => {
+    test("Then it should render 3 img element", () => {
       const expecResult = 3;
       render(
         <Provider store={store}>
@@ -78,7 +78,7 @@ describe("Given the Check component", () => {
   });
 
   describe("When it should  in the document a img", () => {
-    test("Then it show should in te document a img its the same to 1", () => {
+    test("Then it show should in te document a img its the same to 3", () => {
       const expecResult = 3;
       render(
         <Provider store={store}>
