@@ -62,7 +62,6 @@ export const createReserveThunk =
         }
       );
 
-      loading("CREATING RESERVATION...");
       correctAction("NEW RESERVE CREATED");
       dispatch(createReserveActionCreator(newReserve));
     } catch (error) {}
