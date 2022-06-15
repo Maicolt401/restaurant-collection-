@@ -12,7 +12,6 @@ import { blankStateActionCreator } from "../../redux/feature/reservesSlice/oneRe
 const CreateController = (): JSX.Element => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { oneReserve } = useAppSelector((state) => state.reserve);
   const { idReserves } = useParams();
   const dispatch = useAppDispatch();
   const { reserves } = useAppSelector((state) => state);
