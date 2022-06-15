@@ -40,7 +40,7 @@ const CreateController = (): JSX.Element => {
     });
   };
 
-  const handleSubmit = (event: React.FormEvent): void => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     const newReserve = new FormData();
@@ -58,9 +58,10 @@ const CreateController = (): JSX.Element => {
     }
     newReserve.append("numberPersons", `${formData.numberPersons}`);
     formData._id
-      ? dispatch(editReserveThunk(formData._id, formData))
-      : dispatch(createReserveThunk(newReserve));
+      ? await dispatch(editReserveThunk(formData._id, formData))
+      : await dispatch(createReserveThunk(newReserve));
     setFormData(clearFiles);
+
     navigate("/home");
   };
 

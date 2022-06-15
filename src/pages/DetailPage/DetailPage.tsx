@@ -14,6 +14,7 @@ const ReserverStyled = styled.div`
     text-align: center;
   }
   a {
+    font-size: 25px;
     text-decoration: none;
     color: #a93528;
     text-align: center;
@@ -42,7 +43,7 @@ const DetailPage = (): JSX.Element => {
         <h1>Detail Reserve</h1>
 
         <ReserveDetail />
-        <NavLink to="/home"> Go to Back</NavLink>
+        <NavLink to="/home"> Go Back</NavLink>
       </ReserverStyled>
     </>
   );
