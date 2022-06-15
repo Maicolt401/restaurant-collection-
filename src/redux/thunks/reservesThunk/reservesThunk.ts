@@ -60,11 +60,10 @@ export const createReserveThunk =
           },
         }
       );
+      correctAction("NEW RESERVE CREATED");
       const userInfo: IReserves = jwtDecode(data.token);
       localStorage.setItem("token", data.token);
-
       dispatch(createReserveActionCreator(userInfo));
-      correctAction("NEW RESERVE CREATED");
     } catch (error) {}
   };
 
@@ -83,7 +82,6 @@ export const editReserveThunk =
         }
       );
       dispatch(editReserveActionCreator(reserve));
-      // dispatch(loadOneReserveActionCreator(reserve));
       correctAction("Reserve Edited ");
     } catch {}
   };
