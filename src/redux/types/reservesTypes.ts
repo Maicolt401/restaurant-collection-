@@ -18,3 +18,7 @@ export interface IreservesSimple {
   date: string;
   imageBackup?: string;
 }
+
+export interface IReserveDetail {
+  oneReserve: IReserves;
+}

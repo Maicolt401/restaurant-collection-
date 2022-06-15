@@ -6,6 +6,7 @@ import {
   loadReservessActionCreator,
   deleteReserveActionCreator,
   createReserveActionCreator,
+  editReserveActionCreator,
 } from "../../feature/reservesSlice/reservesSlice";
 import { AppDispatch } from "../../store/store";
 import { IReserves } from "../../types/reservesTypes";
@@ -81,8 +82,8 @@ export const editReserveThunk =
           },
         }
       );
-
-      dispatch(loadOneReserveActionCreator(reserve));
+      dispatch(editReserveActionCreator(reserve));
+      // dispatch(loadOneReserveActionCreator(reserve));
       correctAction("Reserve Edited ");
     } catch {}
   };

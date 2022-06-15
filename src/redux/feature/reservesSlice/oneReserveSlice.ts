@@ -1,11 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IReserves } from "../../types/reservesTypes";
+import { createSlice } from "@reduxjs/toolkit";
+import { IReserveDetail } from "../../types/reservesTypes";
 
-interface ReserveState {
-  oneReserve: IReserves;
-}
-
-const initialState: ReserveState = {
+const initialState: IReserveDetail = {
   oneReserve: {
     _id: "",
     name: "",
@@ -22,10 +18,10 @@ const oneReserveSlice = createSlice({
   name: "reserve",
   initialState,
   reducers: {
-    loadOneReserve: (reserve, action: PayloadAction<IReserves>) => ({
+    loadOneReserve: (reserve, action) => ({
       oneReserve: { ...action.payload },
     }),
-    blankState: () => initialState,
+    // blankState: () => initialState,
   },
 });
 
@@ -33,5 +29,5 @@ export default oneReserveSlice.reducer;
 
 export const {
   loadOneReserve: loadOneReserveActionCreator,
-  blankState: blankStateActionCreator,
+  // blankState: blankStateActionCreator,
 } = oneReserveSlice.actions;

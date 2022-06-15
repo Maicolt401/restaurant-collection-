@@ -48,6 +48,13 @@ const DetailStyled = styled.div`
         padding: 0;
         margin-top: 15px;
         margin-bottom: 15px;
+        p {
+          background-color: #f8cc9f;
+          font-size: 25px;
+          text-decoration: underline;
+          color: black;
+          border-radius: 5px;
+        }
       }
     }
   }
@@ -93,10 +100,12 @@ const DetailStyled = styled.div`
       .buttonClick {
         cursor: pointer;
         border: none;
-        background: none;
         padding: 0;
         margin-top: 15px;
         margin-bottom: 15px;
+        p {
+          font-size: 35px;
+        }
       }
     }
   }
@@ -130,11 +139,11 @@ const ReserveDetail = (): JSX.Element => {
           <section className="info">
             <span className="date">Date: {oneReserve.date}</span>
             <span> Hour: {oneReserve.hour} hrs</span>
-            <span>DNI:{oneReserve.DNI}</span>
             <span> Number Persons:{oneReserve.numberPersons} </span>
           </section>
           <button className="buttonClick" onClick={editReserve}>
-            <img src="image/edit.png" alt="edit icon" />
+            <p>Edit Reserve</p>{" "}
+            {/* <img src="image/edit.png" alt="edit icon" /> */}
           </button>
         </div>
       </DetailStyled>

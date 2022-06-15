@@ -28,6 +28,11 @@ const reservesSlice = createSlice({
       ...reserves,
       ...action.payload,
     }),
+    editReserve: (reserves, action): ReservesState => ({
+      AllReserves: reserves.AllReserves.map((reserve) =>
+        reserve._id === action.payload.id ? action.payload : reserve
+      ),
+    }),
     filterReserve: (reserves, action) => action.payload,
   },
 });
@@ -37,6 +42,7 @@ export const {
   deleteReserve: deleteReserveActionCreator,
   createReserve: createReserveActionCreator,
   filterReserve: filterReserveActionCreator,
+  editReserve: editReserveActionCreator,
 } = reservesSlice.actions;
 
 export default reservesSlice.reducer;

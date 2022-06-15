@@ -7,7 +7,6 @@ import {
 } from "../../redux/thunks/reservesThunk/reservesThunk";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { IReserves } from "../../redux/types/reservesTypes";
-import { blankStateActionCreator } from "../../redux/feature/reservesSlice/oneReserveSlice";
 
 const CreateController = (): JSX.Element => {
   const navigate = useNavigate();
@@ -61,7 +60,6 @@ const CreateController = (): JSX.Element => {
     formData._id
       ? dispatch(editReserveThunk(formData._id, formData))
       : dispatch(createReserveThunk(newReserve));
-    dispatch(blankStateActionCreator());
     setFormData(clearFiles);
     navigate("/home");
   };
@@ -89,7 +87,7 @@ const CreateController = (): JSX.Element => {
                 className="login-form__input"
                 type="text"
                 id="name"
-                placeholder="Name"
+                placeholder="mario..."
                 value={formData.name}
                 onChange={handleInputChange}
               />
@@ -106,12 +104,12 @@ const CreateController = (): JSX.Element => {
               />
             </label>
             <label className="login-form__label" htmlFor="username">
-              Number Persons
+              Number People
               <input
                 className="login-form__input"
                 type="number"
                 id="numberPersons"
-                placeholder="numberPersons"
+                placeholder="Number Of people...0 - 20 "
                 value={formData.numberPersons}
                 onChange={handleInputChange}
               />
@@ -124,17 +122,6 @@ const CreateController = (): JSX.Element => {
                 id="date"
                 placeholder="Date"
                 value={formData.date}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label className="login-form__label" htmlFor="password">
-              DNI
-              <input
-                className="login-form__input"
-                type="text"
-                id="DNI"
-                placeholder="DNI"
-                value={formData.DNI}
                 onChange={handleInputChange}
               />
             </label>

@@ -7,7 +7,7 @@ import ReserveDetail from "./ReserveDetail";
 describe("Given a ReserveDetail component", () => {
   describe("When ti should in the document the text `name`", () => {
     test("Then it show a text `name` its the same to 1", () => {
-      const expectResult = 2;
+      const expectResult = 1;
 
       render(
         <BrowserRouter>
