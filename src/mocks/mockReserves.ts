@@ -21,6 +21,13 @@ const mockListReserves = [
   },
 ];
 
+export const mockUser = {
+  username: "jota",
+  name: "jota",
+  password: "jota",
+  id: "1",
+};
+
 export const mockReserve = [
   {
     name: "maria cristhina",

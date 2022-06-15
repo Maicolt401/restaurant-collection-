@@ -33,7 +33,6 @@ const reservesSlice = createSlice({
         reserve._id === action.payload.id ? action.payload : reserve
       ),
     }),
-    filterReserve: (reserves, action) => action.payload,
   },
 });
 
@@ -41,7 +40,6 @@ export const {
   loadReserves: loadReservessActionCreator,
   deleteReserve: deleteReserveActionCreator,
   createReserve: createReserveActionCreator,
-  filterReserve: filterReserveActionCreator,
   editReserve: editReserveActionCreator,
 } = reservesSlice.actions;
 

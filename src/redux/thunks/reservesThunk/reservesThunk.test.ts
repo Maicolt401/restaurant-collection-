@@ -111,6 +111,26 @@ describe("Given a loadOneCheckThunk", () => {
   });
 });
 
+describe("Given a loadOneReserve", () => {
+  describe("When its called", () => {
+    test("then it should dispatch loadOneCheckActionCreator", async () => {
+      const dispatch = jest.fn();
+
+      jest.spyOn(Storage.prototype, "getItem").mockReturnValue("token");
+      axios.get = jest
+        .fn()
+        .mockResolvedValue({ data: mockListReserves[0], status: 200 });
+
+      const action = loadOneReserveActionCreator(mockListReserves[0]);
+      const thunk = getOneReserveThunk(mockListReserves[0]._id);
+
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(action);
+    });
+  });
+});
+
 describe("Given the editNoteThunk function", () => {
   describe("When it's called with an id to edit and a note", () => {
     test("Then it should call dispatch with the new note edited received from the axios request", async () => {
