@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { registerThunk } from "../../redux/thunks/userThunks";
 import StiledComponentFormRegister from "./RegisterFormComponentStyle";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 interface FormData {
   restaurantName: string;
@@ -18,6 +18,7 @@ const RegisterFormComponent = (): JSX.Element => {
     CIF: "",
     password: "",
   };
+  const navigate = useNavigate();
 
   const [formData, setformData] = useState<FormData>(clearFiles);
   const dispatch = useAppDispatch();
@@ -29,10 +30,11 @@ const RegisterFormComponent = (): JSX.Element => {
     });
   };
 
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(registerThunk(formData));
     setformData(clearFiles);
+    await navigate("/login");
   };
 
   return (
@@ -51,19 +53,8 @@ const RegisterFormComponent = (): JSX.Element => {
                 className="login-form__input"
                 type="text"
                 id="restaurantName"
-                placeholder="Restaurant Name"
+                placeholder="Name"
                 value={formData.restaurantName}
-                onChange={handleImputChange}
-              />
-            </label>
-            <label className="login-form__label" htmlFor="CIF">
-              CIF
-              <input
-                className="login-form__input"
-                type="text"
-                id="CIF"
-                placeholder="CIF"
-                value={formData.CIF}
                 onChange={handleImputChange}
               />
             </label>

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
 import NavLinkComponent from "../../components/NavLinkComponent/NavLinkComponent";
 import ReserveDetail from "../../components/ReserveDetail/ReserveDetail";
@@ -31,6 +31,8 @@ const DetailPage = (): JSX.Element => {
       <ReserverStyled>
         <h1>Detail Reserve</h1>
       </ReserverStyled>
+
+      <NavLink to="/home"> go back</NavLink>
       <ReserveDetail />
     </>
   );

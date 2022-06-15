@@ -59,7 +59,6 @@ const CreateController = (): JSX.Element => {
       newReserve.append("image", formData.imageBackup);
     }
     newReserve.append("numberPersons", `${formData.numberPersons}`);
-    console.log(oneReserve);
     formData._id
       ? dispatch(editReserveThunk(formData._id, formData))
       : dispatch(createReserveThunk(newReserve));
