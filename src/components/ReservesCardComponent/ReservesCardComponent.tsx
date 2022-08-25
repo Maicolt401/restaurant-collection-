@@ -160,6 +160,7 @@ const ReservesCardComponent = ({
       <ReserverStyled>
         <section className="info">
           <main>{date}</main>
+          
           <p> {name}</p>
           <p>{hour} hrs</p>
           <p>CANT. PERSONS: {numberPersons}PAX</p>
